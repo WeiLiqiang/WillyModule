@@ -1,0 +1,31 @@
+buildscript {
+    ConfigHelper.init(gradle)
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        maven { url 'https://jitpack.io' }
+        jcenter()
+    }
+
+    dependencies {
+        for (def entrySet : ConfigHelper.getApplyPlugins().entrySet()) {
+            classpath entrySet.value.path
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        maven { url 'https://jitpack.io' }
+        jcenter()
+    }
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

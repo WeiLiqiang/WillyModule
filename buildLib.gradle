@@ -1,0 +1,15 @@
+apply plugin: "com.android.library"
+apply from: "${rootDir.path}/buildCommon.gradle"
+
+dependencies {
+    if (project.name.endsWith("_pkg") || project.name.endsWith("_mock")) {
+        //如果此模块是“_pkg”或者“_mock”，则需要依赖所有的“_export”模块
+        for (def entrySet : ConfigHelper.getApplyExports().entrySet()) {
+            api entrySet.value.dep
+        }
+    } else if (project.name.endsWith("_export")) {
+        //如果此模块是“_export”，则依赖“lib_common”模块即可
+        api Config.modules.lib_common.dep
+    }
+
+}

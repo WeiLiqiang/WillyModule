@@ -1,0 +1,20 @@
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    api Config.libs.utilcode.path
+    api Config.libs.free_proguard.path
+    api Config.libs.swipe_panel.path
+
+    api Config.libs.support_appcompat_v7.path
+    api Config.libs.support_design.path
+    api Config.libs.support_multidex.path
+    api Config.libs.support_constraint.path
+    api Config.libs.kotlin.path
+    api Config.libs.retrofit.path
+    api Config.libs.okhttp.path
+    api Config.libs.gson.path
+    api Config.libs.kotlin_coroutines.path
+    api Config.libs.kotlin_coroutines_Android.path
+    api Config.libs.glide.path
+    annotationProcessor Config.libs.glide_processor.path
+}

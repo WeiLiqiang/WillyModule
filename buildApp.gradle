@@ -1,0 +1,63 @@
+apply plugin: "com.android.application"
+apply {
+    from "${rootDir.path}/buildCommon.gradle"
+    if (Config.plugins.plugin_api.isApply) {
+        plugin Config.plugins.plugin_api.id
+    }
+    if (Config.plugins.plugin_bus.isApply) {
+        plugin Config.plugins.plugin_bus.id
+    }
+}
+
+android {
+    defaultConfig {
+        applicationId Config.applicationId + suffix
+        targetSdkVersion Config.targetSdkVersion
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            applicationIdSuffix ".debug"
+            resValue "string", "app_name", Config.appName + suffix + ".debug"
+        }
+
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "app_name", Config.appName + suffix
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/*'
+    }
+
+    dexOptions {
+        preDexLibraries true
+        javaMaxHeapSize "8g"
+        maxProcessCount 8
+        dexInProcess = true
+    }
+}
+
+dependencies {
+    debugImplementation Config.libs.leakcanary_android.path
+
+    //根据Config.pkgConfig 来依赖所有pkg模块
+    for (def entrySet : ConfigHelper.getApplyPkgs()) {
+        api entrySet.value.dep
+    }
+
+    //根据Config配置依赖mock模块
+    if (Config.modules.feature_mock.isApply) {
+        api Config.modules.feature_mock.dep
+    }
+}
+
+def getSuffix() {
+    if (project.name == "feature_launcher_app") return ""
+    return "." + project.name.substring("feature_".length(), project.name.length() - "_app".length())
+}

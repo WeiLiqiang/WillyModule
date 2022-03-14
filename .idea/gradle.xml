@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/feature/feature0/export" />
+            <option value="$PROJECT_DIR$/feature/feature0/pkg" />
+            <option value="$PROJECT_DIR$/feature/feature1/export" />
+            <option value="$PROJECT_DIR$/feature/feature1/pkg" />
+            <option value="$PROJECT_DIR$/feature/launcher/app" />
+            <option value="$PROJECT_DIR$/feature/launcher/export" />
+            <option value="$PROJECT_DIR$/feature/launcher/pkg" />
+            <option value="$PROJECT_DIR$/lib/base" />
+            <option value="$PROJECT_DIR$/lib/common" />
+            <option value="$PROJECT_DIR$/plugin/api-gradle-plugin" />
+            <option value="$PROJECT_DIR$/plugin/bus-gradle-plugin" />
+            <option value="$PROJECT_DIR$/plugin/lib/base-transform" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
