@@ -1,6 +1,7 @@
 package com.wlq.willymodule.base.camera.manager.impl
 
 import android.content.Context
+import android.hardware.Camera
 import android.media.CamcorderProfile
 import android.media.MediaActionSound
 import android.media.MediaRecorder

@@ -8,6 +8,7 @@ import android.media.ExifInterface
 import android.media.MediaActionSound
 import android.media.MediaRecorder
 import android.os.Build
+import com.blankj.utilcode.util.LogUtils
 import com.wlq.willymodule.base.camera.config.ConfigurationProvider
 import com.wlq.willymodule.base.camera.config.size.AspectRatio
 import com.wlq.willymodule.base.camera.config.size.Size
@@ -20,7 +21,6 @@ import com.wlq.willymodule.base.camera.listener.CameraVideoListener
 import com.wlq.willymodule.base.camera.preview.CameraPreview
 import com.wlq.willymodule.base.camera.preview.CameraPreviewCallback
 import com.wlq.willymodule.base.camera.util.CameraHelper
-import com.wlq.willymodule.base.camera.util.XLog
 import com.wlq.willymodule.base.camera.util.XLog.d
 import com.wlq.willymodule.base.camera.util.XLog.e
 import com.wlq.willymodule.base.camera.util.XLog.i
@@ -44,23 +44,27 @@ class Camera1Manager(cameraPreview: CameraPreview) : BaseCameraManager<Int?>(cam
     override fun openCamera(cameraOpenListener: CameraOpenListener?) {
         super.openCamera(cameraOpenListener)
         backgroundHandler?.post {
-            XLog.d("Camera1Manager", "openCamera")
-            camera = open(currentCameraId!!)
-            camera?.setPreviewCallback { bytes, camera ->
-                notifyPreviewFrameChanged(bytes, previewSize!!, camera.parameters.previewFormat)
+            LogUtils.d("Camera1Manager", "openCamera")
+            if (currentCameraId == null) {
+                notifyCameraOpenError(Throwable("camera id is empty"))
+            } else {
+                camera = open(currentCameraId!!)
+                camera?.setPreviewCallback { bytes, camera ->
+                    notifyPreviewFrameChanged(bytes, previewSize!!, camera.parameters.previewFormat)
+                }
+                prepareCameraOutputs()
+                adjustCameraParameters(
+                    forceCalculateSizes = false,
+                    changeFocusMode = true,
+                    changeFlashMode = true
+                )
+                if (cameraPreview.isAvailable) {
+                    setupPreview()
+                }
+                camera?.startPreview()
+                showingPreview = true
+                notifyCameraOpened()
             }
-            prepareCameraOutputs()
-            adjustCameraParameters(
-                forceCalculateSizes = false,
-                changeFocusMode = true,
-                changeFlashMode = true
-            )
-            if (cameraPreview.isAvailable) {
-                setupPreview()
-            }
-            camera?.startPreview()
-            showingPreview = true
-            notifyCameraOpened()
         }
     }
 
@@ -68,7 +72,7 @@ class Camera1Manager(cameraPreview: CameraPreview) : BaseCameraManager<Int?>(cam
         get() = camera != null
 
     override fun switchCamera(cameraFace: Int) {
-        XLog.d("Camera1Manager", "switchCamera : $cameraFace")
+        LogUtils.d("Camera1Manager", "switchCamera : $cameraFace")
         super.switchCamera(cameraFace)
         if (isCameraOpened) {
             closeCamera(cameraCloseListener)

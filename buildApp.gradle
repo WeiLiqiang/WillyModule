@@ -9,6 +9,17 @@ apply {
     }
 }
 
+if (Config.plugins.plugin_bus.isApply) {
+    bus {
+        onlyScanLibRegex = '^([:]|(com\\.wlq)|(io\\.github\\.weiliqiang)).+$'
+    }
+}
+if (Config.plugins.plugin_api.isApply) {
+    api {
+        onlyScanLibRegex = '^([:]|(com\\.wlq)|(io\\.github\\.weiliqiang)).+$'
+    }
+}
+
 android {
     defaultConfig {
         applicationId Config.applicationId + suffix

@@ -138,39 +138,43 @@ class Camera2Manager(cameraPreview: CameraPreview) : BaseCameraManager<String>(c
             adjustCameraConfiguration(false)
             try {
                 val start1 = System.currentTimeMillis()
-                cameraManager?.openCamera(
-                    currentCameraId!!,
-                    object : CameraDevice.StateCallback() {
-                        override fun onOpened(camera: CameraDevice) {
-                            val start2 = System.currentTimeMillis()
-                            cameraDevice = camera
-                            if (cameraPreview.isAvailable) {
-                                createPreviewSession()
+                if (currentCameraId == null) {
+                    notifyCameraOpenError(Throwable("camera id is empty"))
+                } else {
+                    cameraManager?.openCamera(
+                        currentCameraId!!,
+                        object : CameraDevice.StateCallback() {
+                            override fun onOpened(camera: CameraDevice) {
+                                val start2 = System.currentTimeMillis()
+                                cameraDevice = camera
+                                if (cameraPreview.isAvailable) {
+                                    createPreviewSession()
+                                }
+                                notifyCameraOpened()
+                                d("Camera2Manager", "Camera opened cost : "
+                                        + (System.currentTimeMillis() - start2) + "ms "
+                                        + (System.currentTimeMillis() - start1) + "ms "
+                                        + (System.currentTimeMillis() - start0) + "ms."
+                                )
                             }
-                            notifyCameraOpened()
-                            d("Camera2Manager", "Camera opened cost : "
-                                    + (System.currentTimeMillis() - start2) + "ms "
-                                    + (System.currentTimeMillis() - start1) + "ms "
-                                    + (System.currentTimeMillis() - start0) + "ms."
-                            )
-                        }
 
-                        override fun onDisconnected(camera: CameraDevice) {
-                            e("Camera2Manager", "Camera disconnected.")
-                            camera.close()
-                            cameraDevice = null
-                            notifyCameraOpenError(RuntimeException("Camera disconnected."))
-                        }
+                            override fun onDisconnected(camera: CameraDevice) {
+                                e("Camera2Manager", "Camera disconnected.")
+                                camera.close()
+                                cameraDevice = null
+                                notifyCameraOpenError(RuntimeException("Camera disconnected."))
+                            }
 
-                        override fun onError(camera: CameraDevice, error: Int) {
-                            e("Camera2Manager", "Camera open error : $error")
-                            camera.close()
-                            cameraDevice = null
-                            notifyCameraOpenError(RuntimeException("Camera error : $error"))
-                        }
-                    },
-                    backgroundHandler
-                )
+                            override fun onError(camera: CameraDevice, error: Int) {
+                                e("Camera2Manager", "Camera open error : $error")
+                                camera.close()
+                                cameraDevice = null
+                                notifyCameraOpenError(RuntimeException("Camera error : $error"))
+                            }
+                        },
+                        backgroundHandler
+                    )
+                }
             } catch (ex: Exception) {
                 e("Camera2Manager", "error : $ex")
                 notifyCameraOpenError(ex)

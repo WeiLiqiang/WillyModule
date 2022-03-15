@@ -2,3 +2,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api Config.modules.lib_base.dep
 }
+
+ext {
+    groupId = Config.modules.lib_common.groupId
+    artifactId = Config.modules.lib_common.artifactId
+    version = Config.modules.lib_common.version
+    website = "https://github.com/Blankj/AndroidUtilCode"
+}
+apply from: "${rootDir.path}/config/publish.gradle"

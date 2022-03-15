@@ -57,7 +57,7 @@ public class Feature0Activity extends BaseActivity {
 
             @Override
             public void onCameraOpenError(@NonNull Throwable throwable) {
-                LogUtils.i("onCameraOpened:" + throwable.getMessage());
+                LogUtils.e("onCameraOpened:" + throwable.getMessage());
             }
         });
         cameraView.setCameraPreviewListener((data, size, format) -> {

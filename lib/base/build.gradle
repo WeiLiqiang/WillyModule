@@ -18,3 +18,11 @@ dependencies {
     api Config.libs.glide.path
     annotationProcessor Config.libs.glide_processor.path
 }
+
+ext {
+    groupId = Config.modules.lib_base.groupId
+    artifactId = Config.modules.lib_base.artifactId
+    version = Config.modules.lib_base.version
+    website = "https://github.com/Blankj/AndroidUtilCode"
+}
+apply from: "${rootDir.path}/config/publish.gradle"

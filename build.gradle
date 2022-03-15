@@ -1,3 +1,5 @@
+
+
 buildscript {
     ConfigHelper.init(gradle)
     repositories {
@@ -22,6 +24,17 @@ allprojects {
         google()
         maven { url 'https://jitpack.io' }
         jcenter()
+    }
+
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+
+        resolutionStrategy.eachDependency {
+            if (it.requested.group == 'com.android.support' && !it.requested.name.contains(
+                    'multidex')) {
+                it.useVersion Config.supportVersion
+            }
+        }
     }
 }
 

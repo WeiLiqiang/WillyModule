@@ -4,7 +4,7 @@ import java.util.concurrent.CopyOnWriteArrayList
 
 object XLog {
 
-    private var isDebug = false
+    private var isDebug = true
     private var watchers: CopyOnWriteArrayList<LogWatcher> = CopyOnWriteArrayList()
 
     fun v(tag: String, msg: String?) {

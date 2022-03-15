@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/lib/base" />
             <option value="$PROJECT_DIR$/lib/common" />
             <option value="$PROJECT_DIR$/plugin/api-gradle-plugin" />
+            <option value="$PROJECT_DIR$/plugin/buildSrc-plugin" />
             <option value="$PROJECT_DIR$/plugin/bus-gradle-plugin" />
             <option value="$PROJECT_DIR$/plugin/lib/base-transform" />
           </set>

@@ -50,14 +50,11 @@ afterEvaluate {
                     } else {
                         from project.components.release
                     }
-                    artifact sourcesJar
-                    artifact javadoc
-                    artifact javadocJar
                 } else {
-                    artifact sourcesJar
-                    artifact javadocJar
                     from project.components.java
                 }
+                artifact sourcesJar
+                artifact javadocJar
 
                 pom {
                     name = ext.artifactId
