@@ -84,9 +84,9 @@ afterEvaluate {
                             def dependenciesNode = asNode().getAt('dependencies')[0] ?:
                                     asNode().appendNode('dependencies')
 
-                            configurations.api.getDependencies().each {
-                                dep -> addDependency(project, dependenciesNode, dep, "compile")
-                            }
+//                            configurations.api.getDependencies().each {
+//                                dep -> addDependency(project, dependenciesNode, dep, "compile")
+//                            }
                             configurations.implementation.getDependencies().each {
                                 dep -> addDependency(project, dependenciesNode, dep, "runtime")
                             }

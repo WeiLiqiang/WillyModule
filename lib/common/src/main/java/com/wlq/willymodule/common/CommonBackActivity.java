@@ -2,7 +2,7 @@ package com.wlq.willymodule.common;
 
 import android.os.Bundle;
 
-import com.wlq.willymodule.base.BaseActivity;
+import com.wlq.willymodule.base.base.BaseActivity;
 
 public abstract class CommonBackActivity extends BaseActivity {
 

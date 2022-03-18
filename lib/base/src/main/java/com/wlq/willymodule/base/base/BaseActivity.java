@@ -1,4 +1,4 @@
-package com.wlq.willymodule.base;
+package com.wlq.willymodule.base.base;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

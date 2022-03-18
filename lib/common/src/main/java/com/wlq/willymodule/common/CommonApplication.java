@@ -1,7 +1,7 @@
 package com.wlq.willymodule.common;
 
 
-import com.wlq.willymodule.base.BaseApplication;
+import com.wlq.willymodule.base.base.BaseApplication;
 
 public class CommonApplication extends BaseApplication {
 

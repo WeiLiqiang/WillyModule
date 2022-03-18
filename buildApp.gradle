@@ -1,4 +1,6 @@
 apply plugin: "com.android.application"
+apply plugin: "bytex"
+
 apply {
     from "${rootDir.path}/buildCommon.gradle"
     if (Config.plugins.plugin_api.isApply) {
@@ -6,6 +8,23 @@ apply {
     }
     if (Config.plugins.plugin_bus.isApply) {
         plugin Config.plugins.plugin_bus.id
+    }
+    if (Config.plugins.plugin_mehtodTrace.isApply) {
+        plugin Config.plugins.plugin_mehtodTrace.id
+    }
+}
+
+ByteX {
+    enable true
+    enableInDebug true
+    logLevel "DEBUG"
+}
+
+if (Config.plugins.plugin_mehtodTrace.isApply) {
+    TracePlugin {
+        enable true
+        enableInDebug true
+        logLevel "DEBUG"
     }
 }
 

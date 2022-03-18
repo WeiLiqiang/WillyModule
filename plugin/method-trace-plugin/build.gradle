@@ -1,0 +1,43 @@
+apply {
+    plugin "groovy"
+    plugin "java"
+}
+
+//gradlePlugin {
+//    plugins {
+//        apiPlugin {
+//            id = Config.plugins.plugin_mehtodTrace.id
+//            implementationClass = 'com.wlq.methodtrace.plugin.TracePlugin'
+//        }
+//    }
+//}
+
+dependencies {
+    compileOnly Config.plugins.plugin_gradle.path
+    implementation Config.libs.commons_io.path
+    implementation Config.modules.plugin_lib_base_transform.remotePath
+    implementation Config.libs.bytex_common.path
+    implementation Config.libs.bytex_processor.path
+    annotationProcessor Config.libs.bytex_processor.path
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs += 'src/main/groovy'
+        }
+        java {
+            srcDirs += 'src/main/java'
+        }
+    }
+}
+
+ext {
+    groupId = Config.plugins.plugin_mehtodTrace.groupId
+    artifactId = Config.plugins.plugin_mehtodTrace.artifactId
+    version =  Config.plugins.plugin_mehtodTrace.version
+    website = "https://github.com/WeiLiqiang/WillyModule"
+}
+apply from: "${rootDir.path}/config/publish.gradle"

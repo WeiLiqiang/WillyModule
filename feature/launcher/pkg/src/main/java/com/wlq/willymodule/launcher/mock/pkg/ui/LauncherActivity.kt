@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import com.blankj.utilcode.util.ToastUtils
-import com.wlq.willymodule.base.BaseActivity
+import com.wlq.willymodule.base.base.BaseActivity
 import com.wlq.willymodule.base.util.ApiUtils
 import com.wlq.willymodule.feature0.export.Feature0Param
 import com.wlq.willymodule.feature0.export.api.Feature0Api

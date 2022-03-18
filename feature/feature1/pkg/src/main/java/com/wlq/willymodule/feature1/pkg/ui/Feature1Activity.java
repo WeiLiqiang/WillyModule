@@ -8,7 +8,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.LogUtils;
-import com.wlq.willymodule.base.BaseActivity;
+import com.wlq.willymodule.base.base.BaseActivity;
 import com.wlq.willymodule.base.util.BusUtils;
 import com.wlq.willymodule.feature1.pkg.R;
 

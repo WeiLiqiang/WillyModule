@@ -12,6 +12,10 @@ android {
         consumerProguardFiles 'proguard-rules.pro'
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
         release {
             minifyEnabled true

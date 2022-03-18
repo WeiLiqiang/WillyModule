@@ -146,5 +146,10 @@
       <option name="name" value="maven6" />
       <option name="url" value="file:/$PROJECT_DIR$/plugin/api-gradle-plugin/repo" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven7" />
+      <option name="name" value="maven7" />
+      <option name="url" value="https://artifact.bytedance.com/repository/byteX/" />
+    </remote-repository>
   </component>
 </project>

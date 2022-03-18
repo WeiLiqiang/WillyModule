@@ -1,4 +1,4 @@
-package com.wlq.willymodule.base;
+package com.wlq.willymodule.base.base;
 
 import android.app.Application;
 import android.content.Context;
