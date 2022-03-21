@@ -1,14 +1,22 @@
 apply {
     plugin "groovy"
-    plugin "java"
+    plugin "java-gradle-plugin"
+    plugin "kotlin"
+}
+
+gradlePlugin {
+    plugins {
+        apiPlugin {
+            id = Config.plugins.plugin_startUp.id
+            implementationClass = 'com.wlq.startup.StartupPlugin'
+        }
+    }
 }
 
 dependencies {
     compileOnly Config.plugins.plugin_gradle.path
     implementation Config.libs.commons_io.path
     implementation Config.libs.bytex_common.path
-    implementation Config.libs.bytex_processor.path
-    annotationProcessor Config.libs.bytex_processor.path
     implementation gradleApi()
     implementation localGroovy()
 }
@@ -25,9 +33,9 @@ sourceSets {
 }
 
 ext {
-    groupId = Config.plugins.plugin_mehtodTrace.groupId
-    artifactId = Config.plugins.plugin_mehtodTrace.artifactId
-    version =  Config.plugins.plugin_mehtodTrace.version
+    groupId = Config.plugins.plugin_startUp.groupId
+    artifactId = Config.plugins.plugin_startUp.artifactId
+    version =  Config.plugins.plugin_startUp.version
     website = "https://github.com/WeiLiqiang/WillyModule"
 }
 apply from: "${rootDir.path}/config/publish.gradle"

@@ -11,7 +11,7 @@ class Config {
     static versionName = '1.0.0'
 
     static gradlePluginVersion = '4.1.3'
-    static kotlinVersion = '1.3.50'
+    static kotlinVersion = '1.3.70'
     static ktxVersion = '1.2.0'
     static supportVersion = '28.1.1'
 
@@ -23,6 +23,7 @@ class Config {
             plugin_api_gradle_plugin   : new ModuleConfig(isApply: true , useLocal: true , localPath: "./plugin/api-gradle-plugin"),
             plugin_bus_gradle_plugin   : new ModuleConfig(isApply: true , useLocal: true , localPath: "./plugin/bus-gradle-plugin"),
             plugin_method_trace_plugin : new ModuleConfig(isApply: true , useLocal: true , localPath: "./plugin/method-trace-plugin"),
+            plugin_start_up_plugin     : new ModuleConfig(isApply: true , useLocal: true , localPath: "./plugin/start-up-plugin"),
             plugin_lib_base_transform  : new ModuleConfig(isApply: true , useLocal: true , localPath: "./plugin/lib/base-transform", remotePath: "io.github.weiliqiang:base-transform:1.0.6"),
             feature_mock               : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/mock"),
             feature_launcher_app       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/launcher/app"),
@@ -46,7 +47,8 @@ class Config {
 
             plugin_api          : new PluginConfig(isApply: true, useLocal: false, path: "io.github.weiliqiang:api-gradle-plugin:1.0.10", id: "io.github.weiliqiang.api"),
             plugin_bus          : new PluginConfig(isApply: true, useLocal: false, path: "io.github.weiliqiang:bus-gradle-plugin:1.0.2", id: "io.github.weiliqiang.bus"),
-            plugin_mehtodTrace  : new PluginConfig(isApply: true, useLocal: false, path: "io.github.weiliqiang:methodTrace-plugin:1.0.3", id: "io.github.weiliqiang.methodTrace")
+            plugin_mehtodTrace  : new PluginConfig(isApply: true, useLocal: false, path: "io.github.weiliqiang:methodTrace-plugin:1.0.3", id: "io.github.weiliqiang.methodTrace"),
+            plugin_startUp      : new PluginConfig(isApply: true, useLocal: false, path: "io.github.weiliqiang:startUp-plugin:1.0.3", id: "io.github.weiliqiang.startUp")
     ]
 
     static libs = [

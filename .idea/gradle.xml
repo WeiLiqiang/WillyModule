@@ -24,6 +24,7 @@
             <option value="$PROJECT_DIR$/plugin/bus-gradle-plugin" />
             <option value="$PROJECT_DIR$/plugin/lib/base-transform" />
             <option value="$PROJECT_DIR$/plugin/method-trace-plugin" />
+            <option value="$PROJECT_DIR$/plugin/start-up-plugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
