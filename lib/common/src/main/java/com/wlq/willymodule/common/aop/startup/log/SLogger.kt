@@ -1,5 +1,7 @@
 package com.wlq.willymodule.common.aop.startup.log
 
+import com.wlq.willymodule.base.util.LogUtils
+
 interface SLogger {
 
     companion object {
@@ -7,7 +9,7 @@ interface SLogger {
         class CommonSLogger : SLogger {
 
             override fun i(msg: String) {
-                println(msg)
+                LogUtils.i(msg)
             }
         }
     }

@@ -47,8 +47,8 @@ open class StartupCore(private val shipStuff: Any?) : StartupShipUnLoader {
     }
 
     /**
-     * see com.zyhang.startup.generated.StartupLoaderInit
-     * see com.zyhang.startup.plugin.StartupPlugin
+     * see .generated.StartupLoaderInit
+     * see StartupPlugin
      */
     open fun register(startup: StartupTask) {
         allStartup.add(startup)

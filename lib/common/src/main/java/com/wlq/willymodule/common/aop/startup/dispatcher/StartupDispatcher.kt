@@ -52,12 +52,12 @@ internal class StartupDispatcher(sortResult: StartupSortResult) {
                     countDownLatch?.await(timeout, TimeUnit.MILLISECONDS)
                 }
             }
-            log { "$TAG total main thread time cost ${cost}ms" }
+            log { "$TAG 所有任务耗时${cost}ms" }
         }
     }
 
     private fun dispatch(startup: StartupTask) {
-        log { "$TAG ${startup.id} dispatching" }
+        log { "$TAG ${startup.id}任务开始分发" }
         startup.executorFactory.getInstance().executor().execute {
             var start = System.currentTimeMillis()
             // 阻塞，等待父任务完成
@@ -65,11 +65,11 @@ internal class StartupDispatcher(sortResult: StartupSortResult) {
             startup.awaitTime = System.currentTimeMillis() - start
 
             trace(startup.id) {
-                log { "$TAG ${startup.id} creating" }
+                log { "$TAG ${startup.id}任务执行开始" }
                 start = System.currentTimeMillis()
                 startup.startup()
                 startup.startupTime = System.currentTimeMillis() - start
-                log { "$TAG ${startup.id} created" }
+                log { "$TAG ${startup.id}任务执行完成" }
             }
 
             onStartupCompleted(startup)
@@ -78,7 +78,7 @@ internal class StartupDispatcher(sortResult: StartupSortResult) {
 
     @Synchronized
     private fun onStartupCompleted(startup: StartupTask) {
-        log { "$TAG ${startup.id} wait for ${startup.awaitTime}ms and startup cost ${startup.startupTime}ms" }
+        log { "$TAG ${startup.id} 任务已等待${startup.awaitTime}ms， 执行任务耗时${startup.startupTime}ms" }
         if (startup.isBlock) {
             // 释放总线程（App启动线程）
             countDownLatch?.countDown()

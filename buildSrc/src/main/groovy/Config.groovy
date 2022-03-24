@@ -4,9 +4,9 @@ class Config {
     static applicationId = 'com.wlq.willymodule'
     static appName = 'WillyModule'
 
-    static compileSdkVersion = 28
-    static minSdkVersion = 21
-    static targetSdkVersion = 28
+    static compileSdkVersion = 30
+    static minSdkVersion = 19
+    static targetSdkVersion = 30
     static versionCode = 1_000_000
     static versionName = '1.0.0'
 
@@ -26,7 +26,7 @@ class Config {
             plugin_start_up_plugin     : new ModuleConfig(isApply: true , useLocal: true , localPath: "./plugin/start-up-plugin"),
             plugin_lib_base_transform  : new ModuleConfig(isApply: true , useLocal: true , localPath: "./plugin/lib/base-transform", remotePath: "io.github.weiliqiang:base-transform:1.0.6"),
             feature_mock               : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/mock"),
-            feature_launcher_app       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/launcher/app"),
+            feature_launcher_app       : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/launcher/app"),
             feature_launcher_export    : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/launcher/export"),
             feature_launcher_pkg       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/launcher/pkg"),
             feature_feature0_app       : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/feature0/app"),
@@ -35,6 +35,9 @@ class Config {
             feature_feature1_app       : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/feature1/app"),
             feature_feature1_export    : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/feature1/export"),
             feature_feature1_pkg       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/feature1/pkg"),
+            feature_feature2_app       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/feature2/app"),
+            feature_feature2_export    : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/feature2/export"),
+            feature_feature2_pkg       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/feature2/pkg"),
             lib_base                   : new ModuleConfig(isApply: true , useLocal: true , localPath: "./lib/base", remotePath: "io.github.weiliqiang:lib_base:1.0.1"),
             lib_common                 : new ModuleConfig(isApply: true , useLocal: true , localPath: "./lib/common", remotePath: "io.github.weiliqiang:lib_common:1.0.1"),
             /*Don't delete this line*/
@@ -52,10 +55,9 @@ class Config {
     ]
 
     static libs = [
-            support_appcompat_v7        : new LibConfig(path: "com.android.support:appcompat-v7:$supportVersion"),
-            support_design              : new LibConfig(path: "com.android.support:design:$supportVersion"),
-            support_multidex            : new LibConfig(path: "com.android.support:multidex:1.0.2"),
-            support_constraint          : new LibConfig(path: "com.android.support.constraint:constraint-layout:1.1.3"),
+            appcompat                   : new LibConfig(path: "androidx.appcompat:appcompat:1.2.0"),
+            androidx_multidex           : new LibConfig(path: "androidx.multidex:multidex:2.0.1"),
+            androidx_constraint         : new LibConfig(path: "androidx.constraintlayout:constraintlayout:2.1.3"),
 
             kotlin                      : new LibConfig(path: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"),
             kotlin8                     : new LibConfig(path: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"),

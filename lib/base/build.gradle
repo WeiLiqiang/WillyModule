@@ -5,10 +5,9 @@ dependencies {
     api Config.libs.free_proguard.path
     api Config.libs.swipe_panel.path
 
-    api Config.libs.support_appcompat_v7.path
-    api Config.libs.support_design.path
-    api Config.libs.support_multidex.path
-    api Config.libs.support_constraint.path
+    api Config.libs.androidx_multidex.path
+    api Config.libs.androidx_constraint.path
+    api Config.libs.appcompat.path
     api Config.libs.kotlin.path
     api Config.libs.retrofit.path
     api Config.libs.okhttp.path

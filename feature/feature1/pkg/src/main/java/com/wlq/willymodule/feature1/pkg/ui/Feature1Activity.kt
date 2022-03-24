@@ -1,54 +1,43 @@
-package com.wlq.willymodule.feature1.pkg.ui;
+package com.wlq.willymodule.feature1.pkg.ui
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
+import android.content.Context
+import com.wlq.willymodule.base.base.BaseActivity
+import com.wlq.willymodule.feature1.pkg.R
+import android.content.Intent
+import android.os.Bundle
+import android.view.View
+import com.blankj.utilcode.util.LogUtils
+import com.wlq.willymodule.base.util.BusUtils
 
-import androidx.annotation.Nullable;
-
-import com.blankj.utilcode.util.LogUtils;
-import com.wlq.willymodule.base.base.BaseActivity;
-import com.wlq.willymodule.base.util.BusUtils;
-import com.wlq.willymodule.feature1.pkg.R;
-
-public class Feature1Activity extends BaseActivity {
-
-    private static final String TAG_ONE_PARAM = "TAG_ONE_PARAM";
-
+class Feature1Activity : BaseActivity() {
     @BusUtils.Bus(tag = TAG_ONE_PARAM, sticky = true)
-    public void oneParamFun(String param) {
-        LogUtils.i(param);
+    fun oneParamFun(param: String?) {
+        LogUtils.i(param)
     }
 
-    public static void start(Context context) {
-        Intent starter = new Intent(context, Feature1Activity.class);
-        context.startActivity(starter);
+    override fun bindLayout(): Int {
+        return R.layout.activity_feature1
     }
 
-    @Override
-    public int bindLayout() {
-        return R.layout.activity_feature1;
+    override fun initView(savedInstanceState: Bundle?, contentView: View?) {}
+
+    override fun onStart() {
+        super.onStart()
+        BusUtils.register(this)
     }
 
-    @Override
-    public void initView(@Nullable Bundle savedInstanceState, @Nullable View contentView) {
-
+    override fun doBusiness() {}
+    override fun onStop() {
+        super.onStop()
+        BusUtils.unregister(this)
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        BusUtils.register(this);
-    }
-
-    @Override
-    public void doBusiness() {
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        BusUtils.unregister(this);
+    companion object {
+        private const val TAG_ONE_PARAM = "TAG_ONE_PARAM"
+        @JvmStatic
+        fun start(context: Context) {
+            val starter = Intent(context, Feature1Activity::class.java)
+            context.startActivity(starter)
+        }
     }
 }

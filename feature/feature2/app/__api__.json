@@ -1,0 +1,10 @@
+{
+  "ApiUtilsClass": "com.wlq.willymodule.base.util.ApiUtils",
+  "implApis": {
+    "com/wlq/willymodule/mock/export/api/LauncherApi": "{ implApiClass: com/wlq/willymodule/launcher/mock/pkg/ui/LauncherApiImpl, isMock: false }",
+    "com/wlq/willymodule/feature0/export/api/Feature0Api": "{ implApiClass: com/wlq/willymodule/feature0/pkg/Feature0ApiImpl, isMock: false }",
+    "com/wlq/willymodule/feature1/export/api/Feature1Api": "{ implApiClass: com/wlq/willymodule/feature1/pkg/Feature1ApiImpl, isMock: false }",
+    "com/wlq/willymodule/feature2/export/api/Feature2Api": "{ implApiClass: com/wlq/willymodule/feature2/pkg/Feature2ApiImpl, isMock: false }"
+  },
+  "noImplApis": []
+}

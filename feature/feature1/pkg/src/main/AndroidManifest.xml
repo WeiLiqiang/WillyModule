@@ -1,9 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wlq.willymodule.feature1.pkg">
-
-    <application>
-        <activity android:name=".ui.Feature1Activity"/>
-    </application>
-</manifest>
+<manifest package="com.wlq.willymodule.feature1.pkg" />

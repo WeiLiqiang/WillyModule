@@ -9,18 +9,14 @@ import com.wlq.willymodule.common.aop.methodtrace.TraceMethod
 import com.wlq.willymodule.common.aop.startup.StartupCore
 import com.wlq.willymodule.common.aop.startup.log.SLogger
 
-@TraceClass
 class LauncherApp : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        initUtils()
+        initStartUp()
     }
 
-    @TraceMethod
-    private fun initUtils() {
-        Utils.init(this)
-        LogUtils.getConfig().setConsoleSwitch(true).isLogSwitch = true
+    private fun initStartUp() {
         StartupCore(this)
             .configAwaitTimeout(10000L)
             .configDebug(BuildConfig.DEBUG)

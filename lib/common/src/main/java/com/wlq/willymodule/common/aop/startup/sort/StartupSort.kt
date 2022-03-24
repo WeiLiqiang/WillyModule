@@ -22,7 +22,7 @@ internal interface StartupSort {
                         }
                     )
                 }
-                log { "$TAG sort cost $cost ms" }
+                log { "$TAG 任务排序耗时$cost ms" }
             }
             return sortResult!!
         }
@@ -59,9 +59,9 @@ internal interface StartupSort {
                 }
             }
 
-            val mainResult = mutableListOf<StartupTask>() // 主线程执行的任务
+            val mainResult = mutableListOf<StartupTask>()   // 主线程执行的任务
             val prefixResult = mutableListOf<StartupTask>() // 异步任务，插在前面
-            val orderResult = mutableListOf<StartupTask>() // 最终排序顺序，但不是执行顺序
+            val orderResult = mutableListOf<StartupTask>()  // 最终排序顺序，但不是执行顺序
 
             // 开始排序
             while (zeroDeque.isNotEmpty()) {
