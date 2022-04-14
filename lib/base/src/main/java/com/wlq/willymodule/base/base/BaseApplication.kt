@@ -2,13 +2,19 @@ package com.wlq.willymodule.base.base
 
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
 import com.wlq.willymodule.base.util.AppUtils
 import com.wlq.willymodule.base.util.LogUtils
 import com.wlq.willymodule.base.util.ProcessUtils
 import com.wlq.willymodule.base.util.Utils
 import java.util.ArrayList
 
-open class BaseApplication : Application() {
+open class BaseApplication : Application(), ViewModelStoreOwner {
+
+    private lateinit var appViewModelStore: ViewModelStore
+    private var factory: ViewModelProvider.Factory? = null
 
     private var isDebug: Boolean? = null
         private get() {
@@ -23,15 +29,27 @@ open class BaseApplication : Application() {
         }
         private set
 
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-    }
-
     override fun onCreate() {
         super.onCreate()
+        appViewModelStore = ViewModelStore()
         instance = this
         initUtils()
         initLog()
+    }
+
+    override fun getViewModelStore(): ViewModelStore {
+        return appViewModelStore
+    }
+
+    fun getAppViewModelProvider(): ViewModelProvider {
+        return ViewModelProvider(this, this.getAppFactory())
+    }
+
+    private fun getAppFactory(): ViewModelProvider.Factory {
+        if (factory == null) {
+            factory = ViewModelProvider.AndroidViewModelFactory.getInstance(this)
+        }
+        return factory as ViewModelProvider.Factory
     }
 
     private fun initUtils() {
