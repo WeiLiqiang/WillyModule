@@ -2,7 +2,8 @@ package com.wlq.willymodule.common.aop.methodtrace;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import com.blankj.utilcode.util.LogUtils;
+
+import com.wlq.willymodule.base.util.LogUtils;
 
 import java.util.HashMap;
 

@@ -23,7 +23,6 @@ import androidx.annotation.RequiresPermission;
 import androidx.annotation.StringRes;
 import androidx.core.app.NotificationCompat;
 
-import com.blankj.utilcode.util.UriUtils;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -244,11 +243,11 @@ class UtilsBridge {
     // UriUtils
     ///////////////////////////////////////////////////////////////////////////
     static Uri file2Uri(final File file) {
-        return UriUtils.file2Uri(file);
+        return null;
     }
 
     static File uri2File(final Uri uri) {
-        return UriUtils.uri2File(uri);
+        return null;
     }
 
     ///////////////////////////////////////////////////////////////////////////

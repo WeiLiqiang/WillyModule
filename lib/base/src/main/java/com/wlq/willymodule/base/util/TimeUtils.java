@@ -6,8 +6,7 @@ import android.provider.Settings;
 
 import androidx.annotation.NonNull;
 
-import com.blankj.utilcode.constant.TimeConstants;
-import com.blankj.utilcode.util.Utils;
+import com.wlq.willymodule.base.util.constant.TimeConstants;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -39,7 +38,7 @@ public final class TimeUtils {
      */
     public static boolean isUsingNetworkProvidedTime() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            return Settings.Global.getInt(com.blankj.utilcode.util.Utils.getApp().getContentResolver(), Settings.Global.AUTO_TIME, 0) == 1;
+            return Settings.Global.getInt(Utils.getApp().getContentResolver(), Settings.Global.AUTO_TIME, 0) == 1;
         } else {
             return Settings.System.getInt(Utils.getApp().getContentResolver(), Settings.System.AUTO_TIME, 0) == 1;
         }
