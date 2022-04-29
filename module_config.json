@@ -1,31 +1,43 @@
 {
   "desc": "提交 git 时需要检查下配置是否正确！！！",
   "appConfigDesc": "appConfig 配置的是可以跑 app 的模块，git 提交务必只包含 launcher",
-  "appConfig": ["feature_feature2_app"],
+  "appConfig": ["feature_main_app", "feature_login_app", "feature_index_app", "feature_project_app", "feature_system_app",
+    "feature_wx_app", "feature_mine_app"],
   "pkgConfigDesc": "pkgConfig 配置的是要依赖的功能包，为空则依赖全部，git 提交务必为空",
   "pkgConfig": [],
   "moduleConfigDesc": "proConfig 配置的是使用本地还是仓库，优先级低于 appConfig 和 pkgConfig",
   "moduleConfig": [
     {"name": "plugin_api_gradle_plugin",      "isApply": true, "useLocal": true, "localPath": "./plugin/api-gradle-plugin"},
     {"name": "plugin_bus_gradle_plugin",      "isApply": true, "useLocal": true, "localPath": "./plugin/bus-gradle-plugin"},
-    {"name": "plugin_method_trace_plugin",    "isApply": true, "useLocal": true, "localPath": "./plugin/method-trace-plugin"},
-    {"name": "plugin_start_up_plugin",        "isApply": true, "useLocal": true, "localPath": "./plugin/start-up-plugin"},
     {"name": "plugin_lib_base_transform",     "isApply": true, "useLocal": true, "localPath": "./plugin/lib/base-transform",
       "remotePath": "io.github.weiliqiang:base-transform:1.0.6"},
+
     {"name": "feature_mock",                  "isApply": true, "useLocal": true, "localPath": "./feature/mock"},
-    {"name": "feature_launcher_app",          "isApply": true, "useLocal": true, "localPath": "./feature/launcher/app"},
-    {"name": "feature_launcher_export",       "isApply": true, "useLocal": true, "localPath": "./feature/launcher/export"},
-    {"name": "feature_launcher_pkg",          "isApply": true, "useLocal": true, "localPath": "./feature/launcher/pkg"},
-    {"name": "feature_feature0_app",          "isApply": true, "useLocal": true, "localPath": "./feature/feature0/app"},
-    {"name": "feature_feature0_export",       "isApply": true, "useLocal": true, "localPath": "./feature/feature0/export"},
-    {"name": "feature_feature0_pkg",          "isApply": true, "useLocal": true, "localPath": "./feature/feature0/pkg"},
-    {"name": "feature_feature1_app",          "isApply": true, "useLocal": true, "localPath": "./feature/feature1/app"},
-    {"name": "feature_feature1_export",       "isApply": true, "useLocal": true, "localPath": "./feature/feature1/export"},
-    {"name": "feature_feature1_pkg",          "isApply": true, "useLocal": true, "localPath": "./feature/feature1/pkg"},
-    {"name": "feature_feature2_app",          "isApply": true, "useLocal": true, "localPath": "./feature/feature2/app"},
-    {"name": "feature_feature2_export",       "isApply": true, "useLocal": true, "localPath": "./feature/feature2/export"},
-    {"name": "feature_feature2_pkg",          "isApply": true, "useLocal": true, "localPath": "./feature/feature2/pkg"},
-    {"name": "lib_base",                      "isApply": true, "useLocal": true, "localPath": "./lib/base", "remotePath": "io.github.weiliqiang:lib_base:1.0.1"},
+
+    {"name": "feature_main_app",             "isApply": true, "useLocal": true, "localPath": "./feature/main/app"},
+    {"name": "feature_main_pkg",             "isApply": true, "useLocal": true, "localPath": "./feature/main/pkg"},
+
+    {"name": "feature_index_app",             "isApply": true, "useLocal": true, "localPath": "./feature/index/app"},
+    {"name": "feature_index_export",          "isApply": true, "useLocal": true, "localPath": "./feature/index/export"},
+    {"name": "feature_index_pkg",             "isApply": true, "useLocal": true, "localPath": "./feature/index/pkg"},
+
+    {"name": "feature_project_app",           "isApply": true, "useLocal": true, "localPath": "./feature/project/app"},
+    {"name": "feature_project_export",        "isApply": true, "useLocal": true, "localPath": "./feature/project/export"},
+    {"name": "feature_project_pkg",           "isApply": true, "useLocal": true, "localPath": "./feature/project/pkg"},
+
+    {"name": "feature_system_app",            "isApply": true, "useLocal": true, "localPath": "./feature/system/app"},
+    {"name": "feature_system_export",         "isApply": true, "useLocal": true, "localPath": "./feature/system/export"},
+    {"name": "feature_system_pkg",            "isApply": true, "useLocal": true, "localPath": "./feature/system/pkg"},
+
+    {"name": "feature_wx_app",                "isApply": true, "useLocal": true, "localPath": "./feature/wx/app"},
+    {"name": "feature_wx_export",             "isApply": true, "useLocal": true, "localPath": "./feature/wx/export"},
+    {"name": "feature_wx_pkg",                "isApply": true, "useLocal": true, "localPath": "./feature/wx/pkg"},
+
+    {"name": "feature_navigation_app",              "isApply": true, "useLocal": true, "localPath": "./feature/navigation/app"},
+    {"name": "feature_navigation_export",           "isApply": true, "useLocal": true, "localPath": "./feature/navigation/export"},
+    {"name": "feature_navigation_pkg",              "isApply": true, "useLocal": true, "localPath": "./feature/navigation/pkg"},
+
+    {"name": "lib_base",                      "isApply": true, "useLocal": true, "localPath": "./lib/base", "remotePath": "io.github.weiliqiang:lib_base:1.0.7"},
     {"name": "lib_common",                    "isApply": true, "useLocal": true, "localPath": "./lib/common", "remotePath": "io.github.weiliqiang:lib_common:1.0.1"}
   ]
 }

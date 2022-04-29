@@ -1,5 +1,13 @@
 package com.wlq.willymodule.base.util.constant;
 
+/**
+ * <pre>
+ *     author: Blankj
+ *     blog  : http://blankj.com
+ *     time  : 2017/03/13
+ *     desc  : constants of regex
+ * </pre>
+ */
 public final class RegexConstants {
 
     /**

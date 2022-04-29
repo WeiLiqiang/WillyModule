@@ -1,27 +1,50 @@
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    api Config.libs.utilcode.path
-    api Config.libs.free_proguard.path
-    api Config.libs.swipe_panel.path
-
     api Config.libs.androidx_multidex.path
     api Config.libs.androidx_constraint.path
     api Config.libs.appcompat.path
+    api Config.libs.material.path
+    api Config.libs.view_pager2.path
+    api Config.libs.swiperefreshlayout.path
+
     api Config.libs.kotlin.path
-    api Config.libs.retrofit.path
-    api Config.libs.okhttp.path
-    api Config.libs.gson.path
     api Config.libs.kotlin_coroutines.path
     api Config.libs.kotlin_coroutines_Android.path
+
+    api Config.libs.core_ktx.path
+    api Config.libs.fragment_ktx.path
+    api Config.libs.activity_ktx.path
+    api Config.libs.viewmodel_ktx.path
+    api Config.libs.livedata_ktx.path
+    api Config.libs.lifecycle_ktx.path
+
+    api Config.libs.recyclerview.path
+    api Config.libs.brvh.path
+
+    api Config.libs.gson.path
+
+    api Config.libs.retrofit.path
+    api Config.libs.okhttp.path
+    api Config.libs.converter_gson.path
+    api Config.libs.moshi.path
+    api Config.libs.logging_interceptor.path
+
     api Config.libs.glide.path
     annotationProcessor Config.libs.glide_processor.path
+    api Config.libs.glide_okhttp3.path
+}
+
+android {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 ext {
     groupId = Config.modules.lib_base.groupId
     artifactId = Config.modules.lib_base.artifactId
     version = Config.modules.lib_base.version
-    website = "https://github.com/Blankj/AndroidUtilCode"
+    website = "https://github.com/WeiLiqiang/WillyModule"
 }
 apply from: "${rootDir.path}/config/publish.gradle"

@@ -23,6 +23,10 @@ android {
         }
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -31,4 +35,8 @@ android {
     lintOptions {
         abortOnError false
     }
+}
+
+dependencies {
+    annotationProcessor Config.libs.glide_processor.path
 }

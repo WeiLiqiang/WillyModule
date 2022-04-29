@@ -2,12 +2,12 @@ package com.wlq.willymodule.index.pkg.ui
 
 import android.annotation.SuppressLint
 import android.view.View
-import com.wlq.willymodule.base.image.glide.GlideImageLoader
+import com.wlq.willymodule.base.business.glide.GlideImageLoader
 import com.wlq.willymodule.common.base.recyclerview.BaseBindingAdapter
 import com.wlq.willymodule.common.base.recyclerview.BaseVBViewHolder
+import com.wlq.willymodule.index.pkg.R
 import com.wlq.willymodule.index.pkg.data.bean.Article
-import com.wlq.willymodule.launcher.mock.pkg.R
-import com.wlq.willymodule.launcher.mock.pkg.databinding.ItemHomeListBinding
+import com.wlq.willymodule.index.pkg.databinding.ItemHomeListBinding
 
 class HomeAdapter : BaseBindingAdapter<Article, ItemHomeListBinding>(ItemHomeListBinding::inflate) {
 

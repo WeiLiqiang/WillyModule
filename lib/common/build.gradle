@@ -7,6 +7,6 @@ ext {
     groupId = Config.modules.lib_common.groupId
     artifactId = Config.modules.lib_common.artifactId
     version = Config.modules.lib_common.version
-    website = "https://github.com/Blankj/AndroidUtilCode"
+    website = "https://github.com/WeiLiqiang/WillyModule"
 }
 apply from: "${rootDir.path}/config/publish.gradle"

@@ -5,8 +5,6 @@ import android.util.DisplayMetrics;
 
 import androidx.annotation.NonNull;
 
-import com.blankj.utilcode.util.Utils;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +74,7 @@ public final class AdaptScreenUtils {
      * @return value of px
      */
     public static int pt2Px(final float ptValue) {
-        DisplayMetrics metrics = com.blankj.utilcode.util.Utils.getApp().getResources().getDisplayMetrics();
+        DisplayMetrics metrics = Utils.getApp().getResources().getDisplayMetrics();
         return (int) (ptValue * metrics.xdpi / 72f + 0.5);
     }
 
@@ -87,7 +85,7 @@ public final class AdaptScreenUtils {
      * @return value of pt
      */
     public static int px2Pt(final float pxValue) {
-        DisplayMetrics metrics = com.blankj.utilcode.util.Utils.getApp().getResources().getDisplayMetrics();
+        DisplayMetrics metrics = Utils.getApp().getResources().getDisplayMetrics();
         return (int) (pxValue * 72 / metrics.xdpi + 0.5);
     }
 

@@ -70,7 +70,7 @@ public final class SPUtils {
     }
 
     private SPUtils(final String spName) {
-        sp = com.blankj.utilcode.util.Utils.getApp().getSharedPreferences(spName, Context.MODE_PRIVATE);
+        sp = Utils.getApp().getSharedPreferences(spName, Context.MODE_PRIVATE);
     }
 
     private SPUtils(final String spName, final int mode) {

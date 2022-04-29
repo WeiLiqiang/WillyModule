@@ -8,9 +8,6 @@ buildscript {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
-        maven {
-            url "https://artifact.bytedance.com/repository/byteX/"
-        }
     }
 
     dependencies {
@@ -27,9 +24,6 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
-        maven {
-            url "https://artifact.bytedance.com/repository/byteX/"
-        }
     }
 
     configurations.all {

@@ -7,26 +7,32 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/buildSrc" />
-            <option value="$PROJECT_DIR$/feature/feature0/export" />
-            <option value="$PROJECT_DIR$/feature/feature0/pkg" />
-            <option value="$PROJECT_DIR$/feature/feature1/export" />
-            <option value="$PROJECT_DIR$/feature/feature1/pkg" />
-            <option value="$PROJECT_DIR$/feature/feature2/app" />
-            <option value="$PROJECT_DIR$/feature/feature2/export" />
-            <option value="$PROJECT_DIR$/feature/feature2/pkg" />
-            <option value="$PROJECT_DIR$/feature/launcher/export" />
-            <option value="$PROJECT_DIR$/feature/launcher/pkg" />
+            <option value="$PROJECT_DIR$/feature/index/app" />
+            <option value="$PROJECT_DIR$/feature/index/export" />
+            <option value="$PROJECT_DIR$/feature/index/pkg" />
+            <option value="$PROJECT_DIR$/feature/main/app" />
+            <option value="$PROJECT_DIR$/feature/main/pkg" />
+            <option value="$PROJECT_DIR$/feature/navigation/export" />
+            <option value="$PROJECT_DIR$/feature/navigation/pkg" />
+            <option value="$PROJECT_DIR$/feature/project/app" />
+            <option value="$PROJECT_DIR$/feature/project/export" />
+            <option value="$PROJECT_DIR$/feature/project/pkg" />
+            <option value="$PROJECT_DIR$/feature/system/app" />
+            <option value="$PROJECT_DIR$/feature/system/export" />
+            <option value="$PROJECT_DIR$/feature/system/pkg" />
+            <option value="$PROJECT_DIR$/feature/wx/app" />
+            <option value="$PROJECT_DIR$/feature/wx/export" />
+            <option value="$PROJECT_DIR$/feature/wx/pkg" />
             <option value="$PROJECT_DIR$/lib/base" />
             <option value="$PROJECT_DIR$/lib/common" />
             <option value="$PROJECT_DIR$/plugin/api-gradle-plugin" />
             <option value="$PROJECT_DIR$/plugin/bus-gradle-plugin" />
             <option value="$PROJECT_DIR$/plugin/lib/base-transform" />
-            <option value="$PROJECT_DIR$/plugin/method-trace-plugin" />
-            <option value="$PROJECT_DIR$/plugin/start-up-plugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

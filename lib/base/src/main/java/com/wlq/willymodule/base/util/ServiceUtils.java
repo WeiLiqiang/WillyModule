@@ -9,8 +9,6 @@ import android.os.Build;
 
 import androidx.annotation.NonNull;
 
-import com.blankj.utilcode.util.Utils;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +25,7 @@ public final class ServiceUtils {
      * @return all of the services are running
      */
     public static Set<String> getAllRunningServices() {
-        ActivityManager am = (ActivityManager) com.blankj.utilcode.util.Utils.getApp().getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager am = (ActivityManager) Utils.getApp().getSystemService(Context.ACTIVITY_SERVICE);
         List<RunningServiceInfo> info = am.getRunningServices(0x7FFFFFFF);
         Set<String> names = new HashSet<>();
         if (info == null || info.size() == 0) return null;
@@ -56,7 +54,7 @@ public final class ServiceUtils {
      * @param cls The service class.
      */
     public static void startService(@NonNull final Class<?> cls) {
-        startService(new Intent(com.blankj.utilcode.util.Utils.getApp(), cls));
+        startService(new Intent(Utils.getApp(), cls));
     }
 
     /**
@@ -68,9 +66,9 @@ public final class ServiceUtils {
         try {
             intent.setFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                com.blankj.utilcode.util.Utils.getApp().startForegroundService(intent);
+                Utils.getApp().startForegroundService(intent);
             } else {
-                com.blankj.utilcode.util.Utils.getApp().startService(intent);
+                Utils.getApp().startService(intent);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -99,7 +97,7 @@ public final class ServiceUtils {
      * @return {@code true}: success<br>{@code false}: fail
      */
     public static boolean stopService(@NonNull final Class<?> cls) {
-        return stopService(new Intent(com.blankj.utilcode.util.Utils.getApp(), cls));
+        return stopService(new Intent(Utils.getApp(), cls));
     }
 
     /**
@@ -110,7 +108,7 @@ public final class ServiceUtils {
      */
     public static boolean stopService(@NonNull Intent intent) {
         try {
-            return com.blankj.utilcode.util.Utils.getApp().stopService(intent);
+            return Utils.getApp().stopService(intent);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -162,7 +160,7 @@ public final class ServiceUtils {
     public static void bindService(@NonNull final Class<?> cls,
                                    @NonNull final ServiceConnection conn,
                                    final int flags) {
-        bindService(new Intent(com.blankj.utilcode.util.Utils.getApp(), cls), conn, flags);
+        bindService(new Intent(Utils.getApp(), cls), conn, flags);
     }
 
     /**
@@ -185,7 +183,7 @@ public final class ServiceUtils {
                                    @NonNull final ServiceConnection conn,
                                    final int flags) {
         try {
-            com.blankj.utilcode.util.Utils.getApp().bindService(intent, conn, flags);
+            Utils.getApp().bindService(intent, conn, flags);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -197,7 +195,7 @@ public final class ServiceUtils {
      * @param conn The ServiceConnection object.
      */
     public static void unbindService(@NonNull final ServiceConnection conn) {
-        com.blankj.utilcode.util.Utils.getApp().unbindService(conn);
+        Utils.getApp().unbindService(conn);
     }
 
     /**

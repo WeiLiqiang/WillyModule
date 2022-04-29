@@ -1,35 +1,15 @@
 apply plugin: "com.android.application"
-apply plugin: "bytex"
+if (Config.plugins.plugin_booster.isApply) {
+    apply plugin: Config.plugins.plugin_booster.id
+}
 apply {
     from "${rootDir.path}/buildCommon.gradle"
-}
 
-ByteX {
-    enable true
-    enableInDebug true
-    logLevel "DEBUG"
-}
-
-apply {
     if (Config.plugins.plugin_api.isApply) {
         plugin Config.plugins.plugin_api.id
     }
     if (Config.plugins.plugin_bus.isApply) {
         plugin Config.plugins.plugin_bus.id
-    }
-    if (Config.plugins.plugin_mehtodTrace.isApply) {
-        plugin Config.plugins.plugin_mehtodTrace.id
-    }
-    if (Config.plugins.plugin_startUp.isApply) {
-        plugin Config.plugins.plugin_startUp.id
-    }
-}
-
-if (Config.plugins.plugin_mehtodTrace.isApply) {
-    TracePlugin {
-        enable true
-        enableInDebug true
-        logLevel "DEBUG"
     }
 }
 
@@ -79,8 +59,6 @@ android {
 }
 
 dependencies {
-    debugImplementation Config.libs.leakcanary_android.path
-
     //根据Config.pkgConfig 来依赖所有pkg模块
     for (def entrySet : ConfigHelper.getApplyPkgs()) {
         api entrySet.value.dep

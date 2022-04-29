@@ -12,12 +12,11 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.core.view.GestureDetectorCompat;
 
-import com.blankj.utilcode.util.ImageUtils;
-import com.blankj.utilcode.util.SizeUtils;
+import com.wlq.willymodule.base.util.ImageUtils;
+import com.wlq.willymodule.base.util.SizeUtils;
 import com.wlq.willymodule.common.R;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class ScalableImageView extends View implements GestureDetector.OnGestureListener,GestureDetector.OnDoubleTapListener {
 

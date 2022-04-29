@@ -9,23 +9,23 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView
+import com.wlq.willymodule.base.mvi.observeState
 import com.wlq.willymodule.base.util.LogUtils
 import com.wlq.willymodule.base.util.SizeUtils
-import com.wlq.willymodule.base.util.ToastUtils
 import com.wlq.willymodule.common.base.BaseBusinessFragment
-import com.wlq.willymodule.base.ui.livedata.observeState
-import com.wlq.willymodule.common.utils.livedata.SingleViewEvent
+import com.wlq.willymodule.common.utils.livedata.IsRefresh
+import com.wlq.willymodule.common.utils.livedata.ListStatus
 import com.wlq.willymodule.common.view.SpaceItemDecoration
+import com.wlq.willymodule.index.pkg.R
 import com.wlq.willymodule.index.pkg.data.bean.Banner
+import com.wlq.willymodule.index.pkg.databinding.FragmentIndexBinding
 import com.wlq.willymodule.index.pkg.util.BannerImageLoader
-import com.wlq.willymodule.launcher.mock.pkg.R
-import com.wlq.willymodule.launcher.mock.pkg.databinding.FragmentIndexBinding
 import com.youth.banner.BannerConfig
 import kotlinx.android.synthetic.main.fragment_index.*
 
-class IndexFragment : BaseBusinessFragment<FragmentIndexBinding>(FragmentIndexBinding::inflate) {
+class IndexFragment : BaseBusinessFragment<FragmentIndexBinding, IndexViewModel>(FragmentIndexBinding::inflate) {
 
-    private val viewModel: IndexViewModel by viewModels()
+    override val viewModel: IndexViewModel by viewModels()
 
     companion object {
         const val TAG_FRAGMENT = "IndexFragment"
@@ -73,7 +73,6 @@ class IndexFragment : BaseBusinessFragment<FragmentIndexBinding>(FragmentIndexBi
         indexArticleAdapter.run {
             setOnItemClickListener { _, _, position ->
                 //TODO 跳转到详细页面（webview activity）
-
             }
             setOnItemChildClickListener { _, view, position ->
                 when (view.id) {
@@ -114,13 +113,6 @@ class IndexFragment : BaseBusinessFragment<FragmentIndexBinding>(FragmentIndexBi
                     setBanner(list)
                 }
             })
-
-            singleViewEvens.observe(this@IndexFragment) {
-                when (it) {
-                    is SingleViewEvent.Toast -> ToastUtils.showShort(it.message)
-                    is SingleViewEvent.Log -> LogUtils.log(it.type, TAG_FRAGMENT, it.message)
-                }
-            }
 
             collectStates.run {
                 observeState(this@IndexFragment, IndexCollectViewState::collectArticleList) {

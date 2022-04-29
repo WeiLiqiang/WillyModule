@@ -6,11 +6,12 @@ import androidx.lifecycle.viewModelScope
 import com.wlq.willymodule.base.util.LogUtils
 import com.wlq.willymodule.common.base.BaseViewModel
 import com.wlq.willymodule.common.http.model.HttpResult
-import com.wlq.willymodule.base.ui.livedata.asLiveData
-import com.wlq.willymodule.base.ui.livedata.setState
+import com.wlq.willymodule.base.mvi.asLiveData
+import com.wlq.willymodule.base.mvi.setState
+import com.wlq.willymodule.common.utils.livedata.IsRefresh
+import com.wlq.willymodule.common.utils.livedata.ListStatus
 import com.wlq.willymodule.index.pkg.data.bean.Banner
 import com.wlq.willymodule.index.pkg.data.rep.IndexRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class IndexViewModel : BaseViewModel() {
@@ -36,13 +37,13 @@ class IndexViewModel : BaseViewModel() {
     }
 
     fun getBannerList() {
-        viewModelScope.launch(Dispatchers.Main) {
+        viewModelScope.launch {
             val result = repository.getBanners()
             if (result is HttpResult.Success) {
                 val bannerList = result.data
                 emitBannerUiState(showSuccess = bannerList)
             } else {
-                singleViewLogEvent(
+                viewShowLogEvent(
                     LogUtils.E,
                     "getBannerList error:${(result as HttpResult.Error).apiException.errorMsg}"
                 )
@@ -73,7 +74,7 @@ class IndexViewModel : BaseViewModel() {
                     _viewListStates.setState {
                         copy(listStatus = ListStatus.LoadMoreEnd)
                     }
-                    singleViewToastEvent("暂无更多数据")
+                    viewShowToastEvent("暂无更多数据")
                     return@launch
                 }
                 currentPage++
@@ -90,7 +91,7 @@ class IndexViewModel : BaseViewModel() {
                 _viewListStates.setState {
                     copy(listStatus = ListStatus.Error)
                 }
-                singleViewLogEvent(
+                viewShowLogEvent(
                     LogUtils.E,
                     "getArticleList error:${(result as HttpResult.Error).apiException.errorMsg}"
                 )
@@ -109,7 +110,7 @@ class IndexViewModel : BaseViewModel() {
                     copy(collectArticleList = result.data)
                 }
             } else if (result is HttpResult.Error) {
-                singleViewToastEvent(message = result.apiException.errorMsg)
+                viewShowToastEvent(message = result.apiException.errorMsg)
             }
         }
     }

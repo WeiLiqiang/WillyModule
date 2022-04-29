@@ -1,12 +1,11 @@
 {
   "ApiUtilsClass": "com.wlq.willymodule.base.util.ApiUtils",
   "implApis": {
-    "com/wlq/willymodule/feature2/export/api/ModuleLoginApi": "{ implApiClass: com/wlq/willymodule/login/pkg/LoginExportApiImpl, isMock: false }",
-    "com/wlq/willymodule/mock/export/api/IndexExportApi": "{ implApiClass: com/wlq/willymodule/index/pkg/IndexExportApiImpl, isMock: false }",
+    "com/wlq/willymodule/index/export/IndexExportApi": "{ implApiClass: com/wlq/willymodule/index/pkg/IndexExportApiImpl, isMock: false }",
     "com/wlq/willymodule/project/export/ProjectExportApi": "{ implApiClass: com/wlq/willymodule/project/pkg/ProjectExportApiImpl, isMock: false }",
     "com/wlq/willymodule/system/export/SystemExportApi": "{ implApiClass: com/wlq/willymodule/system/pkg/SystemExportApiImpl, isMock: false }",
     "com/wlq/willymodule/wx/export/WxExportApi": "{ implApiClass: com/wlq/willymodule/wx/pkg/WxExportApiImpl, isMock: false }",
-    "com/wlq/willymodule/mine/export/MineExportApi": "{ implApiClass: com/wlq/willymodule/mine/pkg/MineExportApiImpl, isMock: false }"
+    "com/wlq/willymodule/navigation/export/NavigationExportApi": "{ implApiClass: com/wlq/willymodule/navigation/pkg/NavigationExportApiImpl, isMock: false }"
   },
   "noImplApis": []
 }
