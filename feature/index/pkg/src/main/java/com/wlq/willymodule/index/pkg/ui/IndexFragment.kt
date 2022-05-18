@@ -108,7 +108,7 @@ class IndexFragment : BaseBusinessFragment<FragmentIndexBinding, IndexViewModel>
         super.startObserve()
 
         viewModel.apply {
-            uiBannerState.observe(viewLifecycleOwner, Observer {
+            uiBannerStates.observe(viewLifecycleOwner, Observer {
                 it.showSuccess?.let { list ->
                     setBanner(list)
                 }
@@ -149,7 +149,6 @@ class IndexFragment : BaseBusinessFragment<FragmentIndexBinding, IndexViewModel>
                 }
             }
         }
-
     }
 
     private fun setBanner(bannerList: List<Banner>) {

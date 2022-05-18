@@ -19,7 +19,7 @@ class IndexViewModel : BaseViewModel() {
     private val repository by lazy { IndexRepository() }
 
     private val _uiBannerState = MutableLiveData<BannerUiModel>()
-    val uiBannerState: LiveData<BannerUiModel>
+    val uiBannerStates: LiveData<BannerUiModel>
         get() = _uiBannerState
 
     //页面状态

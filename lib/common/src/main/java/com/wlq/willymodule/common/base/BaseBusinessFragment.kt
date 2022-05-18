@@ -41,7 +41,7 @@ abstract class BaseBusinessFragment<VB : ViewBinding, out VM : BaseViewModel>(
             singleViewEvens.observeEvent(this@BaseBusinessFragment) {
                 when (it) {
                     is SingleViewEvent.Toast -> ToastUtils.showShort(it.message)
-                    is SingleViewEvent.Log -> LogUtils.log(it.type, this@BaseBusinessFragment::class.java.simpleName, it.message)
+                    is SingleViewEvent.Log -> LogUtils.log(it.type, this::class.java.simpleName, it.message)
                     is SingleViewEvent.ShowLoadingDialog -> showLoading()
                     is SingleViewEvent.DismissLoadingDialog -> dismissLoading()
                 }
