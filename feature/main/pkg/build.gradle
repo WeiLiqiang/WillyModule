@@ -1,0 +1,3 @@
+dependencies {
+    api Config.libs.particle_view.path
+}

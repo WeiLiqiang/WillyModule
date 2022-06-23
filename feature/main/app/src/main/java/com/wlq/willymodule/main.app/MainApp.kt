@@ -6,10 +6,5 @@ class MainApp : BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
-        initStartUp()
-    }
-
-    private fun initStartUp() {
-
     }
 }

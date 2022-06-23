@@ -16,6 +16,55 @@
         <entry key="..\:/study/android_workspace/2021/WillyModule/lib/base/src/main/res/drawable/ic_focus_marker_outline.xml" value="0.1885" />
         <entry key="..\:/study/android_workspace/2021/WillyModule/lib/base/src/main/res/layout/layout_focus_marker.xml" value="0.33645833333333336" />
         <entry key="..\:/study/android_workspace/2021/WillyModule/lib/common/src/main/res/layout/common_activity_title.xml" value="0.1" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_about_us_white_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_apps_black_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_arrow_upward_white_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_home_black_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_like_not.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_logout_white_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_navigation_black_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_night_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_project_black_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_setting_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_todo_default_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/ic_wechat_black_24dp.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/layer_list_splash_screen.xml" value="0.3035" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/drawable/nav_item_color_state.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/layout-v23/nav_header_main.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/layout/activity_login.xml" value="0.22361111111111112" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/layout/activity_main.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/layout/activity_splash.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/layout/nav_header_main.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/main/pkg/src/main/res/menu/nav_menu.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/navigation/pkg/src/main/res/layout/fragment_navigation.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/project/pkg/src/main/res/layout/activity_project.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/project/pkg/src/main/res/layout/fragment_load_so.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/project/pkg/src/main/res/layout/fragment_load_so_file.xml" value="0.21215277777777777" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/project/pkg/src/main/res/layout/fragment_project.xml" value="0.2213845099383139" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/project/pkg/src/main/res/layout/fragment_recycler_view.xml" value="0.2213845099383139" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/project/pkg/src/main/res/layout/item_project.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/project/pkg/src/main/res/layout/item_project_detail.xml" value="0.1" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/system/pkg/src/main/res/layout/activity_system.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/system/pkg/src/main/res/layout/activity_system_detail.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/system/pkg/src/main/res/layout/fragment_recycler_view.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/system/pkg/src/main/res/layout/fragment_system.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/system/pkg/src/main/res/layout/item_project.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/system/pkg/src/main/res/layout/item_square_constraint.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/wx/pkg/src/main/res/layout/fragment_recycler_view.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/wx/pkg/src/main/res/layout/fragment_wx.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/wx/pkg/src/main/res/layout/fragment_wx_recycler_view.xml" value="0.1" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/feature/wx/pkg/src/main/res/layout/item_wx_child.xml" value="0.22430555555555556" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/drawable/bg_tag.xml" value="0.1685" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/drawable/bg_toast_custom.xml" value="0.1685" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/drawable/ic_arrow_back.xml" value="0.319" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/drawable/layer_list_splash_screen.xml" value="0.3125" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/drawable/selector_btn_background.xml" value="0.1755" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/drawable/selector_btn_background_enable.xml" value="0.2625" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/drawable/shape_btn_background_default.xml" value="0.1685" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/drawable/shape_btn_background_selected.xml" value="0.1765" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/drawable/shape_btn_background_unselected.xml" value="0.1765" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/layout/fragment_recycler_view.xml" value="0.1" />
+        <entry key="..\:/study/android_workspace/2022/MVIModule/lib/common/src/main/res/layout/layout_title_bar.xml" value="0.22430555555555556" />
         <entry key="..\:/study/android_workspace/2022/WillyModule/feature/feature0/pkg/src/main/res/layout/activity_feature0.xml" value="0.3299284984678243" />
         <entry key="..\:/study/android_workspace/2022/WillyModule/feature/feature1/pkg/src/main/res/layout/activity_feature1.xml" value="0.1" />
         <entry key="..\:/study/android_workspace/2022/WillyModule/feature/feature2/pkg/src/main/res/layout/activity_feature2.xml" value="0.33645833333333336" />

@@ -125,7 +125,10 @@ class IndexFragment : BaseBusinessFragment<FragmentIndexBinding, IndexViewModel>
                     when (it) {
                         is ListStatus.Loading -> swipeRefreshLayout.isRefreshing = true
                         is ListStatus.Success -> swipeRefreshLayout.isRefreshing = false
-                        is ListStatus.Error -> swipeRefreshLayout.isRefreshing = false
+                        is ListStatus.Error -> {
+                            swipeRefreshLayout.isRefreshing = false
+                            indexArticleAdapter.loadMoreModule.loadMoreFail()
+                        }
                         is ListStatus.LoadMoreEnd -> {
                             swipeRefreshLayout.isRefreshing = false
                             indexArticleAdapter.loadMoreModule.loadMoreEnd()

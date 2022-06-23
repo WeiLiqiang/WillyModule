@@ -14,7 +14,6 @@ import java.util.ArrayList
 open class BaseApplication : Application(), ViewModelStoreOwner {
 
     private lateinit var appViewModelStore: ViewModelStore
-    private var factory: ViewModelProvider.Factory? = null
 
     private var isDebug: Boolean? = null
         private get() {
@@ -39,17 +38,6 @@ open class BaseApplication : Application(), ViewModelStoreOwner {
 
     override fun getViewModelStore(): ViewModelStore {
         return appViewModelStore
-    }
-
-    fun getAppViewModelProvider(): ViewModelProvider {
-        return ViewModelProvider(this, this.getAppFactory())
-    }
-
-    private fun getAppFactory(): ViewModelProvider.Factory {
-        if (factory == null) {
-            factory = ViewModelProvider.AndroidViewModelFactory.getInstance(this)
-        }
-        return factory as ViewModelProvider.Factory
     }
 
     private fun initUtils() {

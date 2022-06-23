@@ -2,31 +2,31 @@ package com.wlq.willymodule.system.pkg.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.wlq.willymodule.base.mvi.asLiveData
+import com.wlq.willymodule.base.mvi.asLiveDataDiff
 import com.wlq.willymodule.base.mvi.setState
-import com.wlq.willymodule.common.base.BaseViewModel
 import com.wlq.willymodule.base.util.LogUtils
+import com.wlq.willymodule.common.base.viewmodel.BaseBusinessViewModel
 import com.wlq.willymodule.common.http.model.HttpResult
 import com.wlq.willymodule.common.utils.livedata.IsRefresh
 import com.wlq.willymodule.common.utils.livedata.ListStatus
-import com.wlq.willymodule.system.pkg.data.rep.CollectRepository
-import com.wlq.willymodule.system.pkg.data.rep.KnowledgeRepository
-import com.wlq.willymodule.system.pkg.data.rep.NewProjectRepository
-import com.wlq.willymodule.system.pkg.data.rep.SquareRepository
+import com.wlq.willymodule.system.pkg.data.rep.CollectBusinessRepository
+import com.wlq.willymodule.system.pkg.data.rep.KnowledgeBusinessRepository
+import com.wlq.willymodule.system.pkg.data.rep.NewProjectBusinessRepository
+import com.wlq.willymodule.system.pkg.data.rep.SquareBusinessRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SystemViewModel : BaseViewModel() {
+class SystemViewModel : BaseBusinessViewModel() {
 
-    private val squareRep by lazy { SquareRepository() }
-    private val projectRep by lazy { NewProjectRepository() }
-    private val knowledgeRep by lazy { KnowledgeRepository() }
-    private val collectRep by lazy { CollectRepository() }
+    private val squareRep by lazy { SquareBusinessRepository() }
+    private val projectRep by lazy { NewProjectBusinessRepository() }
+    private val knowledgeRep by lazy { KnowledgeBusinessRepository() }
+    private val collectRep by lazy { CollectBusinessRepository() }
 
     //列表UI状态
     private val _viewListUiStates: MutableLiveData<ArticleUiState> =
         MutableLiveData(ArticleUiState())
-    val listUiStates = _viewListUiStates.asLiveData()
+    val listUiStates = _viewListUiStates.asLiveDataDiff()
 
     sealed class ArticleType {
         object Square : ArticleType()   //广场

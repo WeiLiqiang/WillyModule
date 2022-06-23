@@ -10,7 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" >
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
@@ -20,7 +20,7 @@
             app:tabIndicatorColor="@color/White"
             app:tabMode="scrollable"
             app:tabTextAppearance="@style/TabTextStyle"
-            app:tabTextColor="@color/Grey300"
+            app:tabTextColor="@color/Grey400"
             app:tabSelectedTextColor="@color/White"/>
 
     </com.google.android.material.appbar.AppBarLayout>

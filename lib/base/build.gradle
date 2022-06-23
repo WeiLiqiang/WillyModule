@@ -28,11 +28,14 @@ dependencies {
     api Config.libs.okhttp.path
     api Config.libs.converter_gson.path
     api Config.libs.moshi.path
+    api Config.libs.moshi_kotlin.path
     api Config.libs.logging_interceptor.path
 
     api Config.libs.glide.path
     annotationProcessor Config.libs.glide_processor.path
     api Config.libs.glide_okhttp3.path
+
+    api Config.libs.auto_size.path
 }
 
 android {

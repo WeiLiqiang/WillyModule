@@ -1,7 +1,7 @@
 package com.wlq.willymodule.system.pkg.ui.fragment.square
 
-import com.wlq.willymodule.common.base.recyclerview.BaseBindingAdapter
-import com.wlq.willymodule.common.base.recyclerview.BaseVBViewHolder
+import com.wlq.willymodule.base.base.recyclerview.BaseBindingAdapter
+import com.wlq.willymodule.base.base.recyclerview.BaseVBViewHolder
 import com.wlq.willymodule.system.pkg.data.bean.Article
 import com.wlq.willymodule.system.pkg.databinding.ItemSquareConstraintBinding
 

@@ -38,5 +38,6 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     annotationProcessor Config.libs.glide_processor.path
 }

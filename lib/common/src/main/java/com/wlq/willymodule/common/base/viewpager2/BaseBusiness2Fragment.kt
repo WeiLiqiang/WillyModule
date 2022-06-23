@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
+import com.wlq.willymodule.base.base.BaseLazy2Fragment
 import com.wlq.willymodule.base.mvi.ui.IUiView
 import com.wlq.willymodule.base.mvi.observeEvent
 import com.wlq.willymodule.base.util.LogUtils
 import com.wlq.willymodule.base.util.ToastUtils
-import com.wlq.willymodule.common.base.BaseViewModel
-import com.wlq.willymodule.common.utils.livedata.SingleViewEvent
+import com.wlq.willymodule.base.mvi.viewmodel.BaseViewModel
+import com.wlq.willymodule.base.mvi.livedata.SingleViewEvent
 import com.wlq.willymodule.common.view.MultipleStatusView
 
 abstract class BaseBusiness2Fragment<VB : ViewBinding, out VM : BaseViewModel>(
@@ -26,15 +27,12 @@ abstract class BaseBusiness2Fragment<VB : ViewBinding, out VM : BaseViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initView(view)
         mLayoutStatusView?.setOnClickListener(mRetryClickListener)
     }
 
     open val mRetryClickListener: View.OnClickListener = View.OnClickListener {
 
     }
-
-    abstract fun initView(view: View)
 
     override fun startObserve() {
         viewModel.apply {

@@ -1,8 +1,8 @@
 package com.wlq.willymodule.navigation.pkg.ui
 
-import com.wlq.willymodule.common.base.BaseViewModel
+import com.wlq.willymodule.common.base.viewmodel.BaseBusinessViewModel
 
-class NavigationViewModel : BaseViewModel() {
+class NavigationViewModel : BaseBusinessViewModel() {
 
 
 }

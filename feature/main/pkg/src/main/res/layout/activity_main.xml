@@ -23,7 +23,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom"
             android:background="@color/viewBackground"
@@ -46,11 +46,11 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/viewBackground"
         android:fitsSystemWindows="true"
+        android:background="@color/White"
         app:headerLayout="@layout/nav_header_main"
         app:itemIconTint="@color/item_nav_color_tv"
         app:itemTextColor="@color/item_nav_color_tv"

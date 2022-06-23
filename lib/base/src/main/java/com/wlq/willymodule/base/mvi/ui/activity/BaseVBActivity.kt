@@ -16,8 +16,11 @@ abstract class BaseVBActivity<VB : ViewBinding>(
         super.onCreate(savedInstanceState)
         binding = inflate(layoutInflater)
         setContentView(binding.root)
-        doBusiness()
+        initView()
+        initData(savedInstanceState)
     }
 
-    abstract fun doBusiness()
+    abstract fun initView()
+
+    abstract fun initData(savedInstanceState: Bundle?)
 }

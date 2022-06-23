@@ -1,11 +1,10 @@
 package com.wlq.willymodule.index.pkg.data.api
 
-import com.wlq.willymodule.base.business.network.BaseRetrofitClient
 import com.wlq.willymodule.common.http.model.ApiResponse
 import com.wlq.willymodule.common.http.model.ApiPageResponse
+import com.wlq.willymodule.common.http.retrofit.CommonRetrofitClient
 import com.wlq.willymodule.index.pkg.data.bean.Article
 import com.wlq.willymodule.index.pkg.data.bean.Banner
-import okhttp3.OkHttpClient
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -29,9 +28,7 @@ interface IndexApiService {
     suspend fun cancelCollectArticle(@Path("id") id: Int): ApiResponse<ApiPageResponse<Article>>
 }
 
-object IndexRetrofitClient : BaseRetrofitClient() {
+object IndexRetrofitClient : CommonRetrofitClient() {
 
-    val service by lazy { getService(IndexApiService::class.java, IndexApiService.BASE_URL) }
-
-    override fun handleBuilder(builder: OkHttpClient.Builder) = Unit
+    val service by lazy { getService(IndexApiService::class.java) }
 }

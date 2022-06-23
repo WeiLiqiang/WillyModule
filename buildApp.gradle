@@ -1,7 +1,5 @@
 apply plugin: "com.android.application"
-if (Config.plugins.plugin_booster.isApply) {
-    apply plugin: Config.plugins.plugin_booster.id
-}
+
 apply {
     from "${rootDir.path}/buildCommon.gradle"
 
@@ -59,12 +57,17 @@ android {
 }
 
 dependencies {
-    //根据Config.pkgConfig 来依赖所有pkg模块
+
+    /**
+     * 根据Config.pkgConfig 来依赖所有pkg模块
+     */
     for (def entrySet : ConfigHelper.getApplyPkgs()) {
         api entrySet.value.dep
     }
 
-    //根据Config配置依赖mock模块
+    /**
+     * 根据Config配置依赖mock模块
+     */
     if (Config.modules.feature_mock.isApply) {
         api Config.modules.feature_mock.dep
     }

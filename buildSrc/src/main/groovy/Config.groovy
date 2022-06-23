@@ -48,19 +48,10 @@ class Config {
     static plugins = [
             plugin_gradle               : new PluginConfig(path: "com.android.tools.build:gradle:$gradlePluginVersion"),
             plugin_kotlin               : new PluginConfig(path: "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"),
-            plugin_booster              : new PluginConfig(path: "com.didiglobal.booster:booster-gradle-plugin:4.6.0", id: "com.didiglobal.booster"),
-            plugin_task_analy           : new PluginConfig(path: "com.didiglobal.booster:booster-task-analyser:4.6.0"),
-//            plugin_transform_thread     : new PluginConfig(path: "com.didiglobal.booster:booster-transform-thread:4.6.0"),
-//            plugin_resource_der         : new PluginConfig(path: "com.didiglobal.booster:booster-task-resource-deredundancy:4.6.0"),
-//            plugin_r_inline             : new PluginConfig(path: "com.didiglobal.booster:booster-transform-r-inline:4.6.0"),
-//            plugin_watchdog_daemon      : new PluginConfig(path: "com.didiglobal.booster:booster-transform-finalizer-watchdog-daemon:4.6.0"),
-//            plugin_res_check            : new PluginConfig(path: "com.didiglobal.booster:booster-transform-res-check:4.6.0"),
-//            plugin_activity_thread      : new PluginConfig(path: "com.didiglobal.booster:booster-transform-activity-thread:4.6.0"),
 
             plugin_api          : new PluginConfig(isApply: true, useLocal: false, path: "io.github.weiliqiang:api-gradle-plugin:1.0.10", id: "io.github.weiliqiang.api"),
             plugin_bus          : new PluginConfig(isApply: true, useLocal: false, path: "io.github.weiliqiang:bus-gradle-plugin:1.0.2", id: "io.github.weiliqiang.bus"),
             plugin_mehtodTrace  : new PluginConfig(isApply: false, useLocal: false, path: "io.github.weiliqiang:methodTrace-plugin:1.0.3", id: "io.github.weiliqiang.methodTrace"),
-            plugin_startUp      : new PluginConfig(isApply: false, useLocal: false, path: "io.github.weiliqiang:startUp-plugin:1.0.3", id: "io.github.weiliqiang.startUp")
     ]
 
     static libs = [
@@ -86,8 +77,9 @@ class Config {
             okhttp                      : new LibConfig(path: "com.squareup.okhttp3:okhttp:4.9.3"),
             converter_gson              : new LibConfig(path: "com.squareup.retrofit2:converter-gson:2.9.0"),
             logging_interceptor         : new LibConfig(path: "com.squareup.okhttp3:logging-interceptor:4.9.0"),
-            moshi                       : new LibConfig(path: "com.squareup.moshi:moshi-kotlin:1.7.0"),
 
+            moshi_kotlin                : new LibConfig(path: "com.squareup.moshi:moshi-kotlin:1.8.0"),
+            moshi                       : new LibConfig(path: "com.squareup.moshi:moshi:1.8.0"),
             gson                        : new LibConfig(path: "com.google.code.gson:gson:2.8.5"),
             glide                       : new LibConfig(path: "com.github.bumptech.glide:glide:4.13.0"),
             glide_processor             : new LibConfig(path: "com.github.bumptech.glide:compiler:4.13.0"),
@@ -99,6 +91,10 @@ class Config {
             bytex_common                : new LibConfig(path: "com.bytedance.android.byteX:common:$byteXVersion"),
             bytex_processor             : new LibConfig(path: "com.bytedance.android.byteX:PluginConfigProcessor:$byteXVersion"),
 
-            commons_io                  : new LibConfig(path: "commons-io:commons-io:2.6")
+            commons_io                  : new LibConfig(path: "commons-io:commons-io:2.6"),
+
+            particle_view               : new LibConfig(path: "me.wangyuwei:ParticleView:1.0.4"),
+
+            auto_size                   : new LibConfig(path: "com.github.JessYanCoding:AndroidAutoSize:v1.2.1")
     ]
 }

@@ -3,7 +3,7 @@ package com.wlq.willymodule.wx.pkg
 import androidx.fragment.app.FragmentTransaction
 import com.wlq.willymodule.base.util.ApiUtils
 import com.wlq.willymodule.wx.export.WxExportApi
-import com.wlq.willymodule.wx.pkg.ui.WxFragment
+import com.wlq.willymodule.wx.pkg.ui.fragment.WxFragment
 
 @ApiUtils.Api
 class WxExportApiImpl : WxExportApi() {

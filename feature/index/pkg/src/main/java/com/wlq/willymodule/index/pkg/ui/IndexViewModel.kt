@@ -4,19 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.wlq.willymodule.base.util.LogUtils
-import com.wlq.willymodule.common.base.BaseViewModel
 import com.wlq.willymodule.common.http.model.HttpResult
-import com.wlq.willymodule.base.mvi.asLiveData
+import com.wlq.willymodule.base.mvi.asLiveDataDiff
 import com.wlq.willymodule.base.mvi.setState
+import com.wlq.willymodule.common.base.viewmodel.BaseBusinessViewModel
 import com.wlq.willymodule.common.utils.livedata.IsRefresh
 import com.wlq.willymodule.common.utils.livedata.ListStatus
 import com.wlq.willymodule.index.pkg.data.bean.Banner
-import com.wlq.willymodule.index.pkg.data.rep.IndexRepository
+import com.wlq.willymodule.index.pkg.data.rep.IndexBusinessRepository
 import kotlinx.coroutines.launch
 
-class IndexViewModel : BaseViewModel() {
+class IndexViewModel : BaseBusinessViewModel() {
 
-    private val repository by lazy { IndexRepository() }
+    private val repository by lazy { IndexBusinessRepository() }
 
     private val _uiBannerState = MutableLiveData<BannerUiModel>()
     val uiBannerStates: LiveData<BannerUiModel>
@@ -25,10 +25,10 @@ class IndexViewModel : BaseViewModel() {
     //页面状态
     private val _collectViewStates: MutableLiveData<IndexCollectViewState> =
         MutableLiveData(IndexCollectViewState())
-    val collectStates = _collectViewStates.asLiveData()
+    val collectStates = _collectViewStates.asLiveDataDiff()
     private val _viewListStates: MutableLiveData<IndexListViewState> =
         MutableLiveData(IndexListViewState())
-    val listStates = _viewListStates.asLiveData()
+    val listStates = _viewListStates.asLiveDataDiff()
 
     private var currentPage = 0
 

@@ -3,8 +3,8 @@ package com.wlq.willymodule.index.pkg.ui
 import android.annotation.SuppressLint
 import android.view.View
 import com.wlq.willymodule.base.business.glide.GlideImageLoader
-import com.wlq.willymodule.common.base.recyclerview.BaseBindingAdapter
-import com.wlq.willymodule.common.base.recyclerview.BaseVBViewHolder
+import com.wlq.willymodule.base.base.recyclerview.BaseBindingAdapter
+import com.wlq.willymodule.base.base.recyclerview.BaseVBViewHolder
 import com.wlq.willymodule.index.pkg.R
 import com.wlq.willymodule.index.pkg.data.bean.Article
 import com.wlq.willymodule.index.pkg.databinding.ItemHomeListBinding
@@ -23,7 +23,7 @@ class HomeAdapter : BaseBindingAdapter<Article, ItemHomeListBinding>(ItemHomeLis
             addChildClickViewIds(R.id.iv_like)
             tvArticleAuthor.text = item.author
             if (showStar) {
-                ivLike.setImageResource(if (item.collect) R.drawable.timeline_like_pressed else R.drawable.timeline_like_normal)
+                ivLike.setImageResource(if (item.collect) R.drawable.ic_like_pressed else R.drawable.ic_like_normal)
             } else {
                 ivLike.visibility = View.GONE
             }

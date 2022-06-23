@@ -1,10 +1,10 @@
 package com.wlq.willymodule.project.pkg
 
 import androidx.fragment.app.FragmentTransaction
-import com.wlq.willymodule.project.pkg.ui.ProjectFragment.Companion.getInstance
+import com.wlq.willymodule.project.pkg.ui.fragment.ProjectFragment.Companion.getInstance
 import com.wlq.willymodule.base.util.ApiUtils
 import com.wlq.willymodule.project.export.ProjectExportApi
-import com.wlq.willymodule.project.pkg.ui.ProjectFragment
+import com.wlq.willymodule.project.pkg.ui.fragment.ProjectFragment
 
 @ApiUtils.Api
 class ProjectExportApiImpl : ProjectExportApi() {

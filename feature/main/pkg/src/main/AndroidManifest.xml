@@ -1,3 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.wlq.willymodule.main.pkg">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wlq.willymodule.main.pkg">
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/BaseAppTheme"
+        tools:ignore="DataExtractionRules">
+
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            android:exported="true"
+            tools:ignore="AppLinkUrlError" />
+
+        <activity
+            android:name=".ui.activity.MainActivity" />
+    </application>
 </manifest>

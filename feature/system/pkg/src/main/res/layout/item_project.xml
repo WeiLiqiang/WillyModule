@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp">
+    android:layout_height="200dp"
+    android:background="@color/White"
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,26 +12,32 @@
 
         <ImageView
             android:id="@+id/projectImg"
-            android:layout_width="120dp"
-            android:layout_height="200dp" />
+            android:layout_width="100dp"
+            android:layout_height="match_parent" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginLeft="10dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
             android:gravity="center_vertical">
 
-            <com.google.android.material.textview.MaterialTextView
+            <TextView
                 android:id="@+id/projectName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:ellipsize="end"
+                android:maxLines="3"
                 android:textColor="@color/Black"
                 android:textSize="@dimen/sp_14"/>
 
-            <com.google.android.material.textview.MaterialTextView
+            <TextView
                 android:id="@+id/projectDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:ellipsize="end"
+                android:maxLines="5"
                 android:layout_below="@id/projectName"
                 android:layout_marginTop="2dp"
                 android:textColor="@color/Grey"
@@ -41,19 +48,23 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true">
 
-                <com.google.android.material.textview.MaterialTextView
+                <TextView
                     android:id="@+id/projectTime"
+                    android:includeFontPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/Grey"
+                    android:layout_centerVertical="true"
                     android:textSize="12sp" />
 
-                <com.google.android.material.textview.MaterialTextView
+                <TextView
                     android:id="@+id/projectAuthor"
+                    android:includeFontPadding="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/projectTime"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@id/projectTime"
                     android:textColor="@color/Grey"
                     android:textSize="12sp" />
 
@@ -61,7 +72,8 @@
                     android:id="@+id/articleStar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
                     android:clickable="true"
                     android:focusable="true" />
             </RelativeLayout>

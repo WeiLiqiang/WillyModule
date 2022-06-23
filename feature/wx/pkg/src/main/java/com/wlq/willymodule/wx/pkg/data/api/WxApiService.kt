@@ -1,10 +1,13 @@
 package com.wlq.willymodule.wx.pkg.data.api
 
-import com.wlq.willymodule.base.business.network.BaseRetrofitClient
+import com.wlq.willymodule.common.http.model.ApiPageResponse
 import com.wlq.willymodule.common.http.model.ApiResponse
+import com.wlq.willymodule.common.http.retrofit.CommonRetrofitClient
+import com.wlq.willymodule.wx.pkg.data.bean.Article
 import com.wlq.willymodule.wx.pkg.data.bean.SystemParent
-import okhttp3.OkHttpClient
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface WxApiService {
 
@@ -14,11 +17,12 @@ interface WxApiService {
 
     @GET("/wxarticle/chapters/json")
     suspend fun getBlogType(): ApiResponse<List<SystemParent>>
+
+    @GET("/article/list/{page}/json")
+    suspend fun getBlogList(@Path("page") page: Int, @Query("cid") cid: Int): ApiResponse<ApiPageResponse<Article>>
 }
 
-object WxRetrofitClient : BaseRetrofitClient() {
+object WxRetrofitClient : CommonRetrofitClient() {
 
-    val service by lazy { getService(WxApiService::class.java, WxApiService.BASE_URL) }
-
-    override fun handleBuilder(builder: OkHttpClient.Builder) = Unit
+    val service by lazy { getService(WxApiService::class.java) }
 }

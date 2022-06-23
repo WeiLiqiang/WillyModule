@@ -1,4 +1,0 @@
-dependencies {
-    implementation files('libs\\arcsoft_face.jar')
-    implementation files('libs\\arcsoft_image_util.jar')
-}

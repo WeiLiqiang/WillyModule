@@ -11,31 +11,53 @@ import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
+import com.wlq.willymodule.base.mvi.livedata.SingleViewEvent
+import com.wlq.willymodule.base.mvi.observeEvent
+import com.wlq.willymodule.base.mvi.viewmodel.BaseViewModel
 import com.wlq.willymodule.base.mvi.ui.activity.BaseVBActivity
+import com.wlq.willymodule.base.util.BusUtils
+import com.wlq.willymodule.base.util.LogUtils
+import com.wlq.willymodule.base.util.ToastUtils
 import com.wlq.willymodule.common.R
+import com.wlq.willymodule.common.base.viewmodel.BaseBusinessViewModel
 import com.wlq.willymodule.common.receiver.NetworkChangeReceiver
 import com.wlq.willymodule.common.utils.SettingUtil
 import com.wlq.willymodule.common.utils.StatusBarUtil
 
-abstract class BaseBusinessActivity<VB : ViewBinding>(
+abstract class BaseBusinessActivity<VB : ViewBinding,  VM : BaseBusinessViewModel>(
     inflate: (LayoutInflater) -> VB
 ) : BaseVBActivity<VB>(inflate) {
 
-    /**
-     * theme color
-     */
+    protected abstract val viewModel: VM
+
     protected var mThemeColor: Int = SettingUtil.getColor()
 
-    /**
-     * 网络状态变化的广播
-     */
     protected var mNetworkChangeReceiver: NetworkChangeReceiver? = null
 
     private var progressDialog: ProgressDialog? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
-        super.onCreate(savedInstanceState)
+    override fun initData(savedInstanceState: Bundle?) {
+        viewModel.apply {
+
+            singleViewEvens.observeEvent(this@BaseBusinessActivity) {
+                when (it) {
+                    is SingleViewEvent.Toast -> ToastUtils.showShort(it.message)
+                    is SingleViewEvent.Log -> LogUtils.log(it.type, this::class.java.simpleName, it.message)
+                    is SingleViewEvent.ShowLoadingDialog -> showLoading()
+                    is SingleViewEvent.DismissLoadingDialog -> dismissLoading()
+                }
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        BusUtils.register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        BusUtils.unregister(this)
     }
 
     override fun onResume() {
@@ -76,12 +98,10 @@ abstract class BaseBusinessActivity<VB : ViewBinding>(
             this.supportActionBar?.setBackgroundDrawable(ColorDrawable(mThemeColor))
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if (SettingUtil.getNavBar()) {
-                window.navigationBarColor = mThemeColor
-            } else {
-                window.navigationBarColor = Color.BLACK
-            }
+        if (SettingUtil.getNavBar()) {
+            window.navigationBarColor = mThemeColor
+        } else {
+            window.navigationBarColor = Color.BLACK
         }
     }
 

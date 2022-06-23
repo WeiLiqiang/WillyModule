@@ -162,13 +162,13 @@ class ExternalSoLoadManager {
     }
 
     private fun downloadSoFile(info: DynamicSoInfo, callback: DynamicSoCallback): Boolean {
-        if (RegexUtils.isURL(info.url)) {
+        return if (RegexUtils.isURL(info.url)) {
             //TODO so资源来源于网络，先将so下载至sdcard，再校验，再将so拷贝至私有目录，最后加载(System.load())
             callback.onProgress(100)
-            return true
+            true
         } else {
             //TODO so资源来源于sdcard，先校验，再将so拷贝至私有目录，最后加载(System.load())
-            return FileUtils.copy(info.url, getSoFilePath(info))
+            FileUtils.copy(info.url, getSoFilePath(info))
         }
     }
 
