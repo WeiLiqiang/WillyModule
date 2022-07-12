@@ -22,17 +22,22 @@ open class CommonRetrofitClient(private val headers: Map<String, String>?) : Bas
         private const val BASE_URL = "https://www.wanandroid.com"
     }
 
+    open var addCacheInterceptor: Boolean = true
+
     override fun handleBuilder(builder: OkHttpClient.Builder) {
-        val cacheFile = File(Utils.getApp().cacheDir, "cache")
-        val cache = Cache(cacheFile, HttpConstants.MAX_CACHE_SIZE)
-        val sslParams = HttpsUtils.getSslSocketFactory()
-        builder.cookieJar(CookieJarImpl(PersistentCookieStore()))
+        if (addCacheInterceptor) {
+            val cacheFile = File(Utils.getApp().cacheDir, "cache")
+            val cache = Cache(cacheFile, HttpConstants.MAX_CACHE_SIZE)
+            builder.cookieJar(CookieJarImpl(PersistentCookieStore()))
+            builder.addInterceptor(CacheInterceptor()).cache(cache)
+        }
+
         if (!headers.isNullOrEmpty()) {
             builder.addInterceptor(BaseInterceptor(headers))
         }
-        builder.addInterceptor(CacheInterceptor())
-            .cache(cache)
-            .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
+
+        val sslParams = HttpsUtils.getSslSocketFactory()
+        builder.sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
     }
 
     override fun handleService(retrofitBuilder: Retrofit.Builder) {

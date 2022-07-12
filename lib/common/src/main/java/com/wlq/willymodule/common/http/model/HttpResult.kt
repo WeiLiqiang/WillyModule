@@ -1,8 +1,8 @@
 package com.wlq.willymodule.common.http.model
 
-sealed class HttpResult<out T : Any> {
+sealed class HttpResult<out T> {
 
-    data class Success<out T : Any>(val data: T) : HttpResult<T>()
+    data class Success<out T>(val data: T) : HttpResult<T>()
 
     data class Error(val apiException: ApiException) : HttpResult<Nothing>()
 

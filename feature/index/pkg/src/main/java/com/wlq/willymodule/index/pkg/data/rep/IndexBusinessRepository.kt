@@ -7,7 +7,7 @@ import com.wlq.willymodule.common.http.model.HttpError
 import com.wlq.willymodule.index.pkg.data.api.IndexRetrofitClient
 import com.wlq.willymodule.index.pkg.data.bean.Banner
 import com.wlq.willymodule.common.http.model.HttpResult
-import com.wlq.willymodule.index.pkg.data.bean.Article
+import com.wlq.willymodule.index.pkg.data.bean.IndexArticle
 
 class IndexBusinessRepository : BaseBusinessRepository() {
 
@@ -29,24 +29,24 @@ class IndexBusinessRepository : BaseBusinessRepository() {
     private suspend fun requestBanners(): HttpResult<List<Banner>> =
         executeResponse(httpService.getBanner())
 
-    suspend fun getArticleList(currentPage: Int): HttpResult<ApiPageResponse<Article>> {
+    suspend fun getArticleList(currentPage: Int): HttpResult<ApiPageResponse<IndexArticle>> {
         return safeApiCall(call = { requestArticleList(currentPage) }, specifiedMessage = "")
     }
 
-    private suspend fun requestArticleList(page: Int): HttpResult<ApiPageResponse<Article>> =
+    private suspend fun requestArticleList(page: Int): HttpResult<ApiPageResponse<IndexArticle>> =
         executeResponse(httpService.getHomeArticles(page))
 
-    suspend fun collectArticle(articleId: Int): HttpResult<ApiPageResponse<Article>> {
+    suspend fun collectArticle(articleId: Int): HttpResult<ApiPageResponse<IndexArticle>> {
         return safeApiCall(call = { requestCollectArticle(articleId) }, specifiedMessage = "")
     }
 
-    private suspend fun requestCollectArticle(articleId: Int): HttpResult<ApiPageResponse<Article>> =
+    private suspend fun requestCollectArticle(articleId: Int): HttpResult<ApiPageResponse<IndexArticle>> =
         executeResponse(httpService.collectArticle(articleId))
 
-    suspend fun unCollectArticle(articleId: Int): HttpResult<ApiPageResponse<Article>> {
+    suspend fun unCollectArticle(articleId: Int): HttpResult<ApiPageResponse<IndexArticle>> {
         return safeApiCall(call = { requestUnCollectArticle(articleId) }, specifiedMessage = "")
     }
 
-    private suspend fun requestUnCollectArticle(articleId: Int): HttpResult<ApiPageResponse<Article>> =
+    private suspend fun requestUnCollectArticle(articleId: Int): HttpResult<ApiPageResponse<IndexArticle>> =
         executeResponse(httpService.collectArticle(articleId))
 }

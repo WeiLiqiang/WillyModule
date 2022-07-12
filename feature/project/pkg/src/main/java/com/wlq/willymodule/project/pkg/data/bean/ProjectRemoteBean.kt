@@ -2,52 +2,69 @@ package com.wlq.willymodule.project.pkg.data.bean
 
 import java.io.Serializable
 
-data class Article(
-    val id: Int,
-    val originId: Int,
-    val title: String,
-    val chapterId: Int,
-    val chapterName: String,
-    val envelopePic: String,
-    val link: String,
-    val author: String,
-    val origin: String,
-    val publishTime: Long,
-    val zan: Int,
-    val desc: String,
-    val visible: Int,
-    val niceDate: String,
-    val niceShareDate: String,
+data class ProjectDetail (
+    val apkLink: String? = null,
+    val audit: Int = 0,
+    val author: String? = null,
+    val canEdit: Boolean = false,
+    val chapterId: Int = 0,
+    val chapterName: String? = null,
+    val collect: Boolean,
     val courseId: Int,
-    var collect: Boolean,
-    val apkLink: String,
-    val projectLink: String,
-    val superChapterId: Int,
-    val superChapterName: String?,
-    val type: Int,
-    val fresh: Boolean,
-    val audit: Int,
-    val prefix: String,
+    val desc: String? = null,
+    val descMd: String? = null,
+    val envelopePic: String? = null,
+    val fresh: Boolean? = null,
+    val host: String? = null,
+    val id: Int,
+    val link: String? = null,
+    val niceDate: String? = null,
+    val niceShareDate: String? = null,
+    val origin: String? = null,
+    val prefix: String? = null,
+    val projectLink: String? = null,
+    val publishTime: Long,
+    val realSuperChapterId: Int,
     val selfVisible: Int,
     val shareDate: Long,
-    val shareUser: String,
-    val tags: Any, // Not sure
-    val userId: Int
+    val shareUser: String? = null,
+    val superChapterId: Int,
+    val superChapterName: String? = null,
+    val tags: List<Tag>? = null,
+    val title: String? = null,
+    val type: Int,
+    val userId: Int,
+    val visible: Int,
+    val zan: Int
 ) : Serializable
 
-data class SystemParent(val children: List<SystemChild>,
-                        val courseId: Int,
-                        val id: Int,
-                        val name: String,
-                        val order: Int,
-                        val parentChapterId: Int,
-                        val visible: Int,
-                        val userControlSetTop: Boolean) : Serializable
+data class Tag(
+    val name: String,
+    val url: String
+)
 
-data class SystemChild(val child: List<SystemChild>,
-                       val courseId: Int,
-                       val id: Int,
-                       val name: String,
-                       val order: Int,
-                       val parentChapterId: Int,
-                       val visible: Int): Serializable
+data class SystemParent(
+    val children: List<SystemChild>,
+    val courseId: Int,
+    val id: Int,
+    val name: String,
+    val order: Int,
+    val parentChapterId: Int,
+    val visible: Int,
+    val userControlSetTop: Boolean,
+    val author: String,
+    val cover: String,
+    val desc: String,
+    val lisense: String,
+    val lisenseLink: String
+) : Serializable
+
+data class SystemChild(
+    val child: List<SystemChild>,
+    val courseId: Int,
+    val id: Int,
+    val name: String,
+    val order: Int,
+    val parentChapterId: Int,
+    val visible: Int
+) : Serializable

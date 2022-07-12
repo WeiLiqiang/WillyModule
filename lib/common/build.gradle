@@ -3,6 +3,12 @@ dependencies {
     api Config.modules.lib_base.dep
 }
 
+android {
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+}
+
 ext {
     groupId = Config.modules.lib_common.groupId
     artifactId = Config.modules.lib_common.artifactId

@@ -4,20 +4,17 @@ import android.app.ProgressDialog
 import android.content.IntentFilter
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
-import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
-import com.wlq.willymodule.base.mvi.livedata.SingleViewEvent
+import com.wlq.willymodule.base.mvi.livedata.CommonViewEvent
 import com.wlq.willymodule.base.mvi.observeEvent
-import com.wlq.willymodule.base.mvi.viewmodel.BaseViewModel
 import com.wlq.willymodule.base.mvi.ui.activity.BaseVBActivity
 import com.wlq.willymodule.base.util.BusUtils
 import com.wlq.willymodule.base.util.LogUtils
-import com.wlq.willymodule.base.util.ToastUtils
 import com.wlq.willymodule.common.R
 import com.wlq.willymodule.common.base.viewmodel.BaseBusinessViewModel
 import com.wlq.willymodule.common.receiver.NetworkChangeReceiver
@@ -37,15 +34,12 @@ abstract class BaseBusinessActivity<VB : ViewBinding,  VM : BaseBusinessViewMode
     private var progressDialog: ProgressDialog? = null
 
     override fun initData(savedInstanceState: Bundle?) {
-        viewModel.apply {
-
-            singleViewEvens.observeEvent(this@BaseBusinessActivity) {
-                when (it) {
-                    is SingleViewEvent.Toast -> ToastUtils.showShort(it.message)
-                    is SingleViewEvent.Log -> LogUtils.log(it.type, this::class.java.simpleName, it.message)
-                    is SingleViewEvent.ShowLoadingDialog -> showLoading()
-                    is SingleViewEvent.DismissLoadingDialog -> dismissLoading()
-                }
+        viewModel.singleViewEvens.observeEvent(this) {
+            when (it) {
+                is CommonViewEvent.Toast -> Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                is CommonViewEvent.Log -> LogUtils.log(it.type, this::class.java.simpleName, it.message)
+                is CommonViewEvent.ShowLoadingDialog -> showLoading()
+                is CommonViewEvent.DismissLoadingDialog -> dismissLoading()
             }
         }
     }

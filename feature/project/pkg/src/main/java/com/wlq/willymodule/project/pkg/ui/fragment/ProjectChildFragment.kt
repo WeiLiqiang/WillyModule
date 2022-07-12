@@ -94,7 +94,7 @@ class ProjectChildFragment :
                     }
                 }
 
-                observeState(this@ProjectChildFragment, ListUiStates::articleList) {
+                observeState(this@ProjectChildFragment, ListUiStates::projectDetailList) {
                     projectAdapter.run {
                         loadMoreModule.isEnableLoadMore = false
                         if (it?.first is IsRefresh.TRUE) {

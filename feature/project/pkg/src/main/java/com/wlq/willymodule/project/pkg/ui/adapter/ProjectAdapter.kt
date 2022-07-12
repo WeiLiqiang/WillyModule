@@ -4,12 +4,12 @@ import com.wlq.willymodule.base.business.glide.GlideImageLoader
 import com.wlq.willymodule.base.base.recyclerview.BaseBindingAdapter
 import com.wlq.willymodule.base.base.recyclerview.BaseVBViewHolder
 import com.wlq.willymodule.project.pkg.R
-import com.wlq.willymodule.project.pkg.data.bean.Article
+import com.wlq.willymodule.project.pkg.data.bean.ProjectDetail
 import com.wlq.willymodule.project.pkg.databinding.ItemProjectBinding
 
-class ProjectAdapter : BaseBindingAdapter<Article, ItemProjectBinding>(ItemProjectBinding::inflate) {
+class ProjectAdapter : BaseBindingAdapter<ProjectDetail, ItemProjectBinding>(ItemProjectBinding::inflate) {
 
-    override fun convert(holder: BaseVBViewHolder, item: Article) {
+    override fun convert(holder: BaseVBViewHolder, item: ProjectDetail) {
         holder.getViewBinding<ItemProjectBinding>().apply {
             GlideImageLoader.getInstance().displayImage(context, item.envelopePic, projectImg)
             projectName.text = item.title

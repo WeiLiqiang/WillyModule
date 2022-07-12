@@ -1,22 +1,15 @@
 package com.wlq.willymodule.common.base
 
-import com.wlq.willymodule.base.business.network.cookie.CookieJarImpl
-import com.wlq.willymodule.base.business.network.cookie.store.CookieStore
 import com.wlq.willymodule.base.business.network.cookie.store.MemoryCookieStore
 import com.wlq.willymodule.base.business.network.cookie.store.PersistentCookieStore
 import com.wlq.willymodule.base.util.LogUtils
 import com.wlq.willymodule.common.http.model.*
 import com.wlq.willymodule.common.http.model.handlingException
-import com.wlq.willymodule.common.http.retrofit.CommonRetrofitClient
 import com.wlq.willymodule.common.model.store.UserInfoStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 
 open class BaseBusinessRepository {
-
-    suspend fun <T : Any> apiCall(call: suspend () -> ApiResponse<T>): ApiResponse<T> {
-        return call.invoke()
-    }
 
     suspend fun <T : Any> safeApiCall(
         call: suspend () -> HttpResult<T>,
@@ -32,13 +25,15 @@ open class BaseBusinessRepository {
             HttpResult.Error(
                 ApiException(
                     httpError.code,
-                    if (specifiedMessage.isNullOrEmpty()) "${httpError.code}：${httpError.errorMsg}" else specifiedMessage
+                    if (specifiedMessage.isNullOrEmpty()) httpError.errorMsg else specifiedMessage,
+                    if (e.localizedMessage != null) e.localizedMessage else ""
                 )
             )
         }
     }
 
     private fun commonHandleErrorBusiness(httpError: HttpError) {
+        LogUtils.e("${httpError.code}:${httpError.errorMsg}")
         if (httpError.code == -1001) {
             //登录失败，清楚用户信息和cookie
             UserInfoStore.clearUserInfo()
@@ -47,7 +42,7 @@ open class BaseBusinessRepository {
         }
     }
 
-    suspend fun <T : Any> executeResponse(
+    suspend fun <T : Any>  executeResponse(
         response: ApiResponse<T>,
         successBlock: (suspend CoroutineScope.() -> Unit)? = null,
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null
@@ -55,7 +50,7 @@ open class BaseBusinessRepository {
         return coroutineScope {
             if (response.errorCode != 0) {
                 errorBlock?.let { it() }
-                HttpResult.Error(ApiException(response.errorCode, response.errorMsg))
+                HttpResult.Error(ApiException(response.errorCode, response.errorMsg, ""))
             } else {
                 successBlock?.let { it() }
                 HttpResult.Success(response.data)

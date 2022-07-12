@@ -26,7 +26,7 @@ class ProjectViewModel : BaseBusinessViewModel() {
                 repository.getProjectTypeList()
             }
             if (result is HttpResult.Success) {
-                _projectTypeList.value = result.data.datas
+                _projectTypeList.value = result.data
             } else {
                 viewShowLogEvent(LogUtils.E, "getBolgTypeList error:${(result as HttpResult.Error).apiException.errorMsg}")
             }

@@ -6,10 +6,10 @@ import com.wlq.willymodule.base.business.glide.GlideImageLoader
 import com.wlq.willymodule.base.base.recyclerview.BaseBindingAdapter
 import com.wlq.willymodule.base.base.recyclerview.BaseVBViewHolder
 import com.wlq.willymodule.index.pkg.R
-import com.wlq.willymodule.index.pkg.data.bean.Article
+import com.wlq.willymodule.index.pkg.data.bean.IndexArticle
 import com.wlq.willymodule.index.pkg.databinding.ItemHomeListBinding
 
-class HomeAdapter : BaseBindingAdapter<Article, ItemHomeListBinding>(ItemHomeListBinding::inflate) {
+class HomeAdapter : BaseBindingAdapter<IndexArticle, ItemHomeListBinding>(ItemHomeListBinding::inflate) {
 
     private var showStar = true
 
@@ -18,7 +18,7 @@ class HomeAdapter : BaseBindingAdapter<Article, ItemHomeListBinding>(ItemHomeLis
     }
 
     @SuppressLint("SetTextI18n")
-    override fun convert(holder: BaseVBViewHolder, item: Article) {
+    override fun convert(holder: BaseVBViewHolder, item: IndexArticle) {
         holder.getViewBinding<ItemHomeListBinding>().apply {
             addChildClickViewIds(R.id.iv_like)
             tvArticleAuthor.text = item.author

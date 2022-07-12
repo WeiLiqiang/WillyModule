@@ -32,10 +32,6 @@ class IndexViewModel : BaseBusinessViewModel() {
 
     private var currentPage = 0
 
-    fun isLogin(): Boolean {
-        return true
-    }
-
     fun getBannerList() {
         viewModelScope.launch {
             val result = repository.getBanners()
@@ -45,7 +41,7 @@ class IndexViewModel : BaseBusinessViewModel() {
             } else {
                 viewShowLogEvent(
                     LogUtils.E,
-                    "getBannerList error:${(result as HttpResult.Error).apiException.errorMsg}"
+                    "getBannerList error:$result"
                 )
             }
         }
@@ -70,7 +66,7 @@ class IndexViewModel : BaseBusinessViewModel() {
             val result = repository.getArticleList(currentPage)
             if (result is HttpResult.Success) {
                 val articleList = result.data
-                if (articleList.offset >= articleList.total) {
+                if (articleList?.offset!! >= articleList.total) {
                     _viewListStates.setState {
                         copy(listStatus = ListStatus.LoadMoreEnd)
                     }
@@ -91,10 +87,7 @@ class IndexViewModel : BaseBusinessViewModel() {
                 _viewListStates.setState {
                     copy(listStatus = ListStatus.Error)
                 }
-                viewShowLogEvent(
-                    LogUtils.E,
-                    "getArticleList error:${(result as HttpResult.Error).apiException.errorMsg}"
-                )
+                viewShowLogEvent(LogUtils.E, "getArticleList error:$result")
             }
         }
     }

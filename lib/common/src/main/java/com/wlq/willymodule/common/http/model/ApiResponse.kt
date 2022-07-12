@@ -3,7 +3,6 @@ package com.wlq.willymodule.common.http.model
 import com.squareup.moshi.Json
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
-import java.io.IOException
 import java.io.Serializable
 
 data class ApiResponse<T>(val errorCode: Int, val errorMsg: String, val data: T) : Serializable
@@ -18,16 +17,16 @@ data class ApiPageResponse<T>(
     @Json(name = "datas") var datas: List<T>
 ) : Serializable
 
-data class ApiException(val errorCode: Int, val errorMsg: String) : Serializable
+data class ApiException(val errorCode: Int, val errorMsg: String, val originMsg: String) : Serializable
 
-suspend fun <T : Any> ApiResponse<T>.executeResponse(
+suspend fun <T> ApiResponse<T>.executeResponse(
     successBlock: (suspend CoroutineScope.() -> Unit)? = null,
     errorBlock: (suspend CoroutineScope.() -> Unit)? = null
 ): HttpResult<T> {
     return coroutineScope {
         if (errorCode == -1) {
             errorBlock?.let { it() }
-            HttpResult.Error(ApiException(errorCode, errorMsg))
+            HttpResult.Error(ApiException(errorCode, errorMsg, ""))
         } else {
             successBlock?.let { it() }
             HttpResult.Success(data)

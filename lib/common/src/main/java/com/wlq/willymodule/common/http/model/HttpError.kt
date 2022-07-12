@@ -3,11 +3,13 @@ package com.wlq.willymodule.common.http.model
 import android.net.ParseException
 import com.google.gson.JsonParseException
 import com.google.gson.stream.MalformedJsonException
+import com.squareup.moshi.JsonDataException
 import com.wlq.willymodule.base.R
 import com.wlq.willymodule.base.util.StringUtils
 import org.apache.http.conn.ConnectTimeoutException
 import org.json.JSONException
 import retrofit2.HttpException
+import java.lang.IllegalArgumentException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
@@ -63,6 +65,11 @@ enum class HttpError(var code: Int, var errorMsg: String) {
     UNKNOWN_HOST_ERROR(1007, "未知主机错误"),
 
     /**
+     * 非法参数错误
+     */
+    ILLEGAL_ARGUMENT_ERROR(1008, "非法参数错误"),
+
+    /**
      * token过期
      */
     TOKEN_EXPIRE(3001, "token过期错误"),
@@ -106,11 +113,17 @@ internal fun handlingException(e: Throwable): HttpError = when (e) {
     is MalformedJsonException -> {
         HttpError.PARSE_ERROR
     }
+    is JsonDataException -> {
+        HttpError.PARSE_ERROR
+    }
     is SSLException -> {
         HttpError.SSL_ERROR
     }
     is UnknownHostException -> {
         HttpError.UNKNOWN_HOST_ERROR
+    }
+    is IllegalArgumentException -> {
+        HttpError.ILLEGAL_ARGUMENT_ERROR
     }
     else -> {
         HttpError.UNKNOWN

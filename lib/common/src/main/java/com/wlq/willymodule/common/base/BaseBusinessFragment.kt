@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.viewbinding.ViewBinding
 import com.wlq.willymodule.base.base.BaseLazyFragment
 import com.wlq.willymodule.base.mvi.ui.IUiView
-import com.wlq.willymodule.base.mvi.observeEvent
 import com.wlq.willymodule.base.util.LogUtils
 import com.wlq.willymodule.base.util.ToastUtils
-import com.wlq.willymodule.base.mvi.livedata.SingleViewEvent
+import com.wlq.willymodule.base.mvi.livedata.CommonViewEvent
+import com.wlq.willymodule.base.mvi.observeEvent
 import com.wlq.willymodule.common.base.viewmodel.BaseBusinessViewModel
 import com.wlq.willymodule.common.view.MultipleStatusView
 
@@ -40,12 +40,12 @@ abstract class BaseBusinessFragment<VB : ViewBinding, out VM : BaseBusinessViewM
     override fun startObserve() {
         viewModel.apply {
 
-            singleViewEvens.observeEvent(this@BaseBusinessFragment) {
+            singleViewEvens.observeEvent(viewLifecycleOwner) {
                 when (it) {
-                    is SingleViewEvent.Toast -> ToastUtils.showShort(it.message)
-                    is SingleViewEvent.Log -> LogUtils.log(it.type, this::class.java.simpleName, it.message)
-                    is SingleViewEvent.ShowLoadingDialog -> showLoading()
-                    is SingleViewEvent.DismissLoadingDialog -> dismissLoading()
+                    is CommonViewEvent.Toast -> ToastUtils.showShort(it.message)
+                    is CommonViewEvent.Log -> LogUtils.log(it.type, this::class.java.simpleName, it.message)
+                    is CommonViewEvent.ShowLoadingDialog -> showLoading()
+                    is CommonViewEvent.DismissLoadingDialog -> dismissLoading()
                 }
             }
         }

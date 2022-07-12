@@ -1,4 +1,4 @@
-package com.wlq.willymodule.main.pkg.data
+package com.wlq.willymodule.main.pkg.data.api
 
 import com.wlq.willymodule.base.business.network.core.MoshiHelper
 import com.wlq.willymodule.base.util.LogUtils

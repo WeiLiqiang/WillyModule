@@ -3,11 +3,6 @@ package com.wlq.willymodule.index.pkg.data.bean
 import com.squareup.moshi.Json
 import java.io.Serializable
 
-data class Tag(
-    @Json(name = "name") val name: String,
-    @Json(name = "url") val url: String
-)
-
 //轮播图
 data class Banner(
     @Json(name = "desc") val desc: String,
@@ -20,36 +15,38 @@ data class Banner(
     @Json(name = "url") val url: String
 )
 
-//文章
-data class Article(
-    val id: Int,
-    val originId: Int,
-    val title: String,
+data class IndexArticle (
+    val apkLink: String,
+    val audit: Int,
+    val author: String,
+    val canEdit: Boolean,
     val chapterId: Int,
     val chapterName: String,
-    val envelopePic: String,
-    val link: String,
-    val author: String,
-    val origin: String,
-    val publishTime: Long,
-    val zan: Int,
+    var collect: Boolean,
+    val courseId: Int,
     val desc: String,
-    val visible: Int,
+    val descMd: String,
+    val envelopePic: String,
+    val fresh: Boolean,
+    val host: String,
+    val id: Int,
+    val link: String,
     val niceDate: String,
     val niceShareDate: String,
-    val courseId: Int,
-    var collect: Boolean,
-    val apkLink: String,
-    val projectLink: String,
-    val superChapterId: Int,
-    val superChapterName: String?,
-    val type: Int,
-    val fresh: Boolean,
-    val audit: Int,
+    val origin: String,
     val prefix: String,
+    val projectLink: String,
+    val publishTime: Long,
+    val realSuperChapterId: Int,
     val selfVisible: Int,
     val shareDate: Long,
     val shareUser: String,
-    val tags: Any, // Not sure
-    val userId: Int
+    val superChapterId: Int,
+    val superChapterName: String,
+    val tags: List<Any>,
+    val title: String,
+    val type: Int,
+    val userId: Int,
+    val visible: Int,
+    val zan: Int
 ) : Serializable

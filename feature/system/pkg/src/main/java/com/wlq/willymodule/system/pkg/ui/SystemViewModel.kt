@@ -56,7 +56,7 @@ class SystemViewModel : BaseBusinessViewModel() {
             }
             if (result is HttpResult.Success) {
                 val data = result.data
-                if (data.offset >= data.total) {
+                if (data?.offset!! >= data.total) {
                     setListUiStates(ListStatus.LoadMoreEnd)
                     viewShowToastEvent("暂无更多数据")
                     return@launch

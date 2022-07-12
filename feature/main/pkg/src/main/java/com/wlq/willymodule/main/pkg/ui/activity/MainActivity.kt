@@ -210,7 +210,6 @@ open class MainActivity :
                 }
                 R.id.nav_logout -> {
                     viewModel.logout()
-                    startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                 }
                 R.id.nav_night_mode -> {
                     window.setWindowAnimations(R.style.WindowAnimationFadeInOut)

@@ -27,6 +27,7 @@ dependencies {
     api Config.libs.retrofit.path
     api Config.libs.okhttp.path
     api Config.libs.converter_gson.path
+    api Config.libs.converter_moshi.path
     api Config.libs.moshi.path
     api Config.libs.moshi_kotlin.path
     api Config.libs.logging_interceptor.path

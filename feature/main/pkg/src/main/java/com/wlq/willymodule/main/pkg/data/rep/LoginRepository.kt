@@ -1,11 +1,11 @@
-package com.wlq.willymodule.main.pkg.data
+package com.wlq.willymodule.main.pkg.data.rep
 
 import com.wlq.willymodule.common.base.BaseBusinessRepository
 import com.wlq.willymodule.common.http.model.HttpResult
 import com.wlq.willymodule.main.pkg.data.api.LoginRetrofitClient
 import com.wlq.willymodule.common.model.bean.UserInfo
 
-class LoginBusinessRepository : BaseBusinessRepository() {
+class LoginRepository : BaseBusinessRepository() {
 
     private val httpService by lazy { LoginRetrofitClient.service }
 

@@ -21,25 +21,23 @@ class ProjectChildViewModel : BaseBusinessViewModel() {
         MutableLiveData(ListUiStates())
     val listUiStates = _viewListUiStates.asLiveDataDiff()
 
-    private var currentPage = 0
+    private var currentPage = 1
 
     fun dispatchViewIntent(it: ProjectIntent) {
         when (it) {
             is ProjectIntent.RefreshListData -> refreshListData(it.isRefresh, it.cid)
             is ProjectIntent.CollectArticle -> collectArticle(it.collectId, it.collect)
-            else -> {
-            }
         }
     }
 
     private fun refreshListData(isRefresh: Boolean, cid: Int) {
         launchMain(block = {
             setListUiStates(ListStatus.Loading)
-            if (isRefresh) currentPage = 0
+            if (isRefresh) currentPage = 1
             val result = repository.getProjectDetailList(currentPage, cid)
             if (result is HttpResult.Success) {
                 val data = result.data
-                if (data.offset >= data.total) {
+                if (data.datas.isEmpty()) {
                     setListUiStates(ListStatus.LoadMoreEnd)
                     viewShowToastEvent("暂无更多数据")
                     return@launchMain
@@ -48,7 +46,7 @@ class ProjectChildViewModel : BaseBusinessViewModel() {
                 _viewListUiStates.setState {
                     copy(
                         listStatus = ListStatus.Success,
-                        articleList = Pair(if (isRefresh) IsRefresh.TRUE else IsRefresh.FALSE, data)
+                        projectDetailList = Pair(if (isRefresh) IsRefresh.TRUE else IsRefresh.FALSE, data)
                     )
                 }
             } else {
