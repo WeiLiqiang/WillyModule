@@ -12,11 +12,19 @@ android {
         consumerProguardFiles 'proguard-rules.pro'
     }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     buildTypes {
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     compileOptions {
@@ -27,4 +35,9 @@ android {
     lintOptions {
         abortOnError false
     }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    annotationProcessor Config.libs.glide_processor.path
 }

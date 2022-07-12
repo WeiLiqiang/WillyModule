@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/White"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="10dp">
+
+    <ImageView
+        android:id="@+id/articleImg"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:src="@drawable/home_hot"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/articleAuthor"
+        style="@style/Article_text"
+        app:layout_constraintBottom_toBottomOf="@+id/articleImg"
+        app:layout_constraintLeft_toRightOf="@+id/articleImg"
+        app:layout_constraintTop_toTopOf="@+id/articleImg"
+        tools:text="wlq" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/articleTag"
+        style="@style/Article_text"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/articleAuthor"
+        app:layout_constraintLeft_toRightOf="@id/articleAuthor"
+        app:layout_constraintTop_toTopOf="@id/articleAuthor"
+        tools:text="Android" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/articleTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="8dp"
+        android:textColor="#1c1c1e"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/articleAuthor" />
+
+    <ImageView
+        android:id="@+id/articleAuthorImg"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:src="@drawable/ic_time"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/articleTitle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/articleTime"
+        style="@style/Article_text"
+        app:layout_constraintBottom_toBottomOf="@id/articleAuthorImg"
+        app:layout_constraintLeft_toRightOf="@+id/articleAuthorImg"
+        app:layout_constraintTop_toTopOf="@id/articleAuthorImg"
+        tools:text="1小时前" />
+
+    <ImageView
+        android:id="@+id/articleStar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="20dp"
+        android:clickable="true"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:src="@drawable/ic_like_normal"
+        app:layout_constraintBottom_toBottomOf="@id/articleTime"
+        app:layout_constraintLeft_toRightOf="@+id/articleTime"
+        app:layout_constraintTop_toTopOf="@id/articleTime" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

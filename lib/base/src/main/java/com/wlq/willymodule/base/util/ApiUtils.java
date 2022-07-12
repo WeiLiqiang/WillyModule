@@ -13,14 +13,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-/**
- * <pre>
- *     author: Blankj
- *     blog  : http://blankj.com
- *     time  : 2019/07/09
- *     desc  : utils about api
- * </pre>
- */
 public final class ApiUtils {
 
     private static final String TAG = "ApiUtils";

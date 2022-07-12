@@ -8,6 +8,7 @@ class ConfigHelper {
     static init(Gradle gradle) {
         generateDep(gradle)
         addCommonGradle(gradle)
+        TaskDurationUtils.init(gradle)
     }
 
     /**

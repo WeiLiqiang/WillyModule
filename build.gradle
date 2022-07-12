@@ -1,11 +1,13 @@
+apply plugin: 'groovy'
+
 buildscript {
     ConfigHelper.init(gradle)
     repositories {
         mavenLocal()
         mavenCentral()
         google()
-        maven { url 'https://jitpack.io' }
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
 
     dependencies {
@@ -20,12 +22,18 @@ allprojects {
         mavenLocal()
         mavenCentral()
         google()
-        maven { url 'https://jitpack.io' }
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
-}
 
+    configurations.all {
+        resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+        resolutionStrategy.eachDependency {
+            if (it.requested.group == 'com.android.support' && !it.requested.name.contains(
+                    'multidex')) {
+                it.useVersion Config.supportVersion
+            }
+        }
+    }
 }

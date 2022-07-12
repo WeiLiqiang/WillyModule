@@ -1,0 +1,6 @@
+<resources>
+
+    <style name="fitSystem">
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+</resources>

@@ -9,7 +9,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.blankj.utilcode.util.SizeUtils;
+import com.wlq.willymodule.base.util.SizeUtils;
 
 public class CircleView extends View {
 

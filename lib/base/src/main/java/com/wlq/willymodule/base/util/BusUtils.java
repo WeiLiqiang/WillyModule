@@ -17,14 +17,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ThreadUtils;
-
-/**
- * <pre>
- *     desc  : utils about bus
- * </pre>
- */
 public final class BusUtils {
 
     private static final Object NULL = "nULl";

@@ -1,0 +1,36 @@
+apply {
+    plugin "groovy"
+    plugin "java-gradle-plugin"
+}
+
+gradlePlugin {
+    plugins {
+        apiPlugin {
+            id = Config.plugins.plugin_buildSrc.id
+            implementationClass = 'com.wlq.buildSrc.BuildSrcPlugin'
+        }
+    }
+}
+
+dependencies {
+    compileOnly Config.plugins.plugin_gradle.path
+    implementation Config.libs.commons_io.path
+    implementation gradleApi()
+    implementation localGroovy()
+}
+
+sourceSets {
+    main {
+        groovy {
+            srcDirs += 'src/main/java'
+        }
+    }
+}
+
+ext {
+    groupId = Config.plugins.plugin_buildSrc.groupId
+    artifactId = Config.plugins.plugin_buildSrc.artifactId
+    version =  Config.plugins.plugin_buildSrc.version
+    website = "https://github.com/WeiLiqiang/WillyModule"
+}
+apply from: "${rootDir.path}/config/publish.gradle"

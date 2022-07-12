@@ -1,0 +1,9 @@
+{
+  "BusUtilsClass": "com.wlq.willymodule.base.util.BusUtils",
+  "rightBus": {
+    "BUS_TAG_USER_NAME": [
+      "{ desc: com.wlq.willymodule.main.pkg.ui.activity.MainActivity#loginSuccessAndUpdateUserInfo(com.wlq.willymodule.common.model.bean.UserInfo userInfo), sticky: true }"
+    ]
+  },
+  "wrongBus": {}
+}

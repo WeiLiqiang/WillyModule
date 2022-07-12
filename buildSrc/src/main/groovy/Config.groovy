@@ -1,18 +1,23 @@
+
 class Config {
 
     static applicationId = 'com.wlq.willymodule'
     static appName = 'WillyModule'
 
-    static compileSdkVersion = 28
+    static compileSdkVersion = 31
     static minSdkVersion = 21
-    static targetSdkVersion = 28
+    static targetSdkVersion = 31
     static versionCode = 1_000_000
     static versionName = '1.0.0'
 
     static gradlePluginVersion = '4.1.3'
-    static kotlinVersion = '1.3.50'
+    static kotlinVersion = '1.4.20'
     static ktxVersion = '1.2.0'
-    static supportVersion = '28.1.1'
+    static lifecycleVersion = '2.4.0'
+    static byteXVersion = '0.3.0'
+
+    static lib_base_version = '1.0.8'
+    static lib_common_version = '1.0.2'
 
     static modules = [
             /*Don't delete this line*/
@@ -21,50 +26,79 @@ class Config {
             plugin_bus_gradle_plugin   : new ModuleConfig(isApply: true , useLocal: true , localPath: "./plugin/bus-gradle-plugin"),
             plugin_lib_base_transform  : new ModuleConfig(isApply: true , useLocal: true , localPath: "./plugin/lib/base-transform", remotePath: "io.github.weiliqiang:base-transform:1.0.6"),
             feature_mock               : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/mock"),
-            feature_launcher_app       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/launcher/app"),
-            feature_launcher_export    : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/launcher/export"),
-            feature_launcher_pkg       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/launcher/pkg"),
-            feature_feature0_app       : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/feature0/app"),
-            feature_feature0_export    : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/feature0/export"),
-            feature_feature0_pkg       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/feature0/pkg"),
-            feature_feature1_app       : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/feature1/app"),
-            feature_feature1_export    : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/feature1/export"),
-            feature_feature1_pkg       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/feature1/pkg"),
-            lib_base                   : new ModuleConfig(isApply: true , useLocal: true , localPath: "./lib/base"),
-            lib_common                 : new ModuleConfig(isApply: true , useLocal: true , localPath: "./lib/common"),
+            feature_main_app           : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/main/app"),
+            feature_main_pkg           : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/main/pkg"),
+            feature_index_app          : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/index/app"),
+            feature_index_export       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/index/export"),
+            feature_index_pkg          : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/index/pkg"),
+            feature_project_app        : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/project/app"),
+            feature_project_export     : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/project/export"),
+            feature_project_pkg        : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/project/pkg"),
+            feature_system_app         : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/system/app"),
+            feature_system_export      : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/system/export"),
+            feature_system_pkg         : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/system/pkg"),
+            feature_wx_app             : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/wx/app"),
+            feature_wx_export          : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/wx/export"),
+            feature_wx_pkg             : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/wx/pkg"),
+            feature_navigation_app     : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/navigation/app"),
+            feature_navigation_export  : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/navigation/export"),
+            feature_navigation_pkg     : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/navigation/pkg"),
+            lib_base                   : new ModuleConfig(isApply: true , useLocal: true , localPath: "./lib/base", remotePath: "io.github.weiliqiang:lib_base:1.0.7"),
+            lib_common                 : new ModuleConfig(isApply: true , useLocal: true , localPath: "./lib/common", remotePath: "io.github.weiliqiang:lib_common:1.0.1"),
             /*Don't delete this line*/
     ]
 
     static plugins = [
-            plugin_gradle       : new PluginConfig(path: "com.android.tools.build:gradle:$gradlePluginVersion"),
-            plugin_kotlin       : new PluginConfig(path: "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"),
+            plugin_gradle               : new PluginConfig(path: "com.android.tools.build:gradle:$gradlePluginVersion"),
+            plugin_kotlin               : new PluginConfig(path: "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"),
 
             plugin_api          : new PluginConfig(isApply: true, useLocal: false, path: "io.github.weiliqiang:api-gradle-plugin:1.0.10", id: "io.github.weiliqiang.api"),
             plugin_bus          : new PluginConfig(isApply: true, useLocal: false, path: "io.github.weiliqiang:bus-gradle-plugin:1.0.2", id: "io.github.weiliqiang.bus"),
+            plugin_mehtodTrace  : new PluginConfig(isApply: false, useLocal: false, path: "io.github.weiliqiang:methodTrace-plugin:1.0.3", id: "io.github.weiliqiang.methodTrace"),
     ]
 
     static libs = [
-            support_appcompat_v7        : new LibConfig(path: "com.android.support:appcompat-v7:$supportVersion"),
-            support_design              : new LibConfig(path: "com.android.support:design:$supportVersion"),
-            support_multidex            : new LibConfig(path: "com.android.support:multidex:1.0.2"),
-            support_constraint          : new LibConfig(path: "com.android.support.constraint:constraint-layout:1.1.3"),
+            androidx_multidex           : new LibConfig(path: "androidx.multidex:multidex:2.0.1"),
+            androidx_constraint         : new LibConfig(path: "androidx.constraintlayout:constraintlayout:2.1.3"),
+            appcompat                   : new LibConfig(path: "androidx.appcompat:appcompat:1.2.0"),
+            recyclerview                : new LibConfig(path: "androidx.recyclerview:recyclerview:1.2.0"),
+            core_ktx                    : new LibConfig(path: "androidx.core:core-ktx:1.6.0"),
+            fragment_ktx                : new LibConfig(path: "androidx.fragment:fragment-ktx:$ktxVersion"),
+            activity_ktx                : new LibConfig(path: "androidx.activity:activity-ktx:$ktxVersion"),
+            viewmodel_ktx               : new LibConfig(path: "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"),
+            livedata_ktx                : new LibConfig(path: "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"),
+            lifecycle_ktx               : new LibConfig(path: "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"),
+            view_pager2                 : new LibConfig(path: "androidx.viewpager2:viewpager2:1.0.0"),
+            swiperefreshlayout          : new LibConfig(path: "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"),
+            material                    : new LibConfig(path: "com.google.android.material:material:1.2.0"),
 
-            kotlin                      : new LibConfig(path: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"),
-            kotlin8                     : new LibConfig(path: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"),
-            ktx                         : new LibConfig(path: "androidx.core:core-ktx:$ktxVersion"),
+            kotlin                     : new LibConfig(path: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"),
             kotlin_coroutines           : new LibConfig(path: "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9"),
             kotlin_coroutines_Android   : new LibConfig(path: "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9"),
 
             retrofit                    : new LibConfig(path: "com.squareup.retrofit2:retrofit:2.9.0"),
             okhttp                      : new LibConfig(path: "com.squareup.okhttp3:okhttp:4.9.3"),
-            gson                        : new LibConfig(path: "com.google.code.gson:gson:2.9.0"),
+            converter_gson              : new LibConfig(path: "com.squareup.retrofit2:converter-gson:2.9.0"),
+            converter_moshi             : new LibConfig(path: "com.squareup.retrofit2:converter-moshi:2.9.0"),
+            logging_interceptor         : new LibConfig(path: "com.squareup.okhttp3:logging-interceptor:4.9.0"),
+
+            moshi_kotlin                : new LibConfig(path: "com.squareup.moshi:moshi-kotlin:1.11.0"),
+            moshi                       : new LibConfig(path: "com.squareup.moshi:moshi:1.11.0"),
+            gson                        : new LibConfig(path: "com.google.code.gson:gson:2.8.5"),
             glide                       : new LibConfig(path: "com.github.bumptech.glide:glide:4.13.0"),
             glide_processor             : new LibConfig(path: "com.github.bumptech.glide:compiler:4.13.0"),
-            utilcode                    : new LibConfig(path: "com.blankj:utilcode:1.28.0"),
-            free_proguard               : new LibConfig(path: "com.blankj:free-proguard:1.0.1"),
-            swipe_panel                 : new LibConfig(path: "com.blankj:swipe-panel:1.1"),
+            glide_okhttp3               : new LibConfig(path: "com.github.bumptech.glide:okhttp3-integration:4.11.0"),
+
+            brvh                        : new LibConfig(path: "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.7"),
+            banner                      : new LibConfig(path: "com.youth.banner:banner:1.4.10"),
+
+            bytex_common                : new LibConfig(path: "com.bytedance.android.byteX:common:$byteXVersion"),
+            bytex_processor             : new LibConfig(path: "com.bytedance.android.byteX:PluginConfigProcessor:$byteXVersion"),
+
             commons_io                  : new LibConfig(path: "commons-io:commons-io:2.6"),
 
-            leakcanary_android  : new LibConfig(path: "com.squareup.leakcanary:leakcanary-android:2.1"),
+            particle_view               : new LibConfig(path: "me.wangyuwei:ParticleView:1.0.4"),
+
+            auto_size                   : new LibConfig(path: "com.github.JessYanCoding:AndroidAutoSize:v1.2.1")
     ]
 }

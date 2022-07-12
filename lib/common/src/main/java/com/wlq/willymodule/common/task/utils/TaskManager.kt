@@ -1,6 +1,6 @@
 package com.wlq.willymodule.common.task.utils
 
-import com.blankj.utilcode.util.LogUtils
+import com.wlq.willymodule.base.util.LogUtils
 import com.wlq.willymodule.common.task.FinalTaskRegister
 import com.wlq.willymodule.common.task.core.TaskInfo
 import com.wlq.willymodule.common.task.core.toTaskInfo

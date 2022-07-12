@@ -1,11 +1,24 @@
 apply plugin: "com.android.application"
+
 apply {
     from "${rootDir.path}/buildCommon.gradle"
+
     if (Config.plugins.plugin_api.isApply) {
         plugin Config.plugins.plugin_api.id
     }
     if (Config.plugins.plugin_bus.isApply) {
         plugin Config.plugins.plugin_bus.id
+    }
+}
+
+if (Config.plugins.plugin_bus.isApply) {
+    bus {
+        onlyScanLibRegex = '^([:]|(com\\.wlq)|(io\\.github\\.weiliqiang)).+$'
+    }
+}
+if (Config.plugins.plugin_api.isApply) {
+    api {
+        onlyScanLibRegex = '^([:]|(com\\.wlq)|(io\\.github\\.weiliqiang)).+$'
     }
 }
 
@@ -44,14 +57,17 @@ android {
 }
 
 dependencies {
-    debugImplementation Config.libs.leakcanary_android.path
 
-    //根据Config.pkgConfig 来依赖所有pkg模块
+    /**
+     * 根据Config.pkgConfig 来依赖所有pkg模块
+     */
     for (def entrySet : ConfigHelper.getApplyPkgs()) {
         api entrySet.value.dep
     }
 
-    //根据Config配置依赖mock模块
+    /**
+     * 根据Config配置依赖mock模块
+     */
     if (Config.modules.feature_mock.isApply) {
         api Config.modules.feature_mock.dep
     }

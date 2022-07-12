@@ -1,25 +1,3 @@
-/*
- 1. add
-    signing.keyId=xx
-    signing.password=xx
-    signing.secretKeyRingFile=/Users/xx/secring.gpg
-    ossrhUsername=xx
-    ossrhPassword=xx
-    in root local.properties
-
- 2. copy the file to the directory of gradle, and apply the file in the module
- ext {
-    groupId = Config.modules.lib_utilcode.groupId
-    artifactId = Config.modules.lib_utilcode.artifactId
-    version = Config.modules.lib_utilcode.version
-    website = "https://github.com/Blankj/AndroidUtilCode"
-}
- apply from: "${rootDir.path}/config/publish.gradle"
-
- 3. execute following command to publish
- ./gradlew :xxmodule:publish2Local  -> upload to mavenLocal
- ./gradlew :xxmodule:publish2Remote -> upload to mavenCentral
-*/
 
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
@@ -50,14 +28,11 @@ afterEvaluate {
                     } else {
                         from project.components.release
                     }
-                    artifact sourcesJar
-                    artifact javadoc
-                    artifact javadocJar
                 } else {
-                    artifact sourcesJar
-                    artifact javadocJar
                     from project.components.java
                 }
+                artifact sourcesJar
+                artifact javadocJar
 
                 pom {
                     name = ext.artifactId
@@ -87,9 +62,9 @@ afterEvaluate {
                             def dependenciesNode = asNode().getAt('dependencies')[0] ?:
                                     asNode().appendNode('dependencies')
 
-                            configurations.api.getDependencies().each {
-                                dep -> addDependency(project, dependenciesNode, dep, "compile")
-                            }
+//                            configurations.api.getDependencies().each {
+//                                dep -> addDependency(project, dependenciesNode, dep, "compile")
+//                            }
                             configurations.implementation.getDependencies().each {
                                 dep -> addDependency(project, dependenciesNode, dep, "runtime")
                             }
