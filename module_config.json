@@ -37,7 +37,7 @@
     {"name": "feature_navigation_export",           "isApply": true, "useLocal": true, "localPath": "./feature/navigation/export"},
     {"name": "feature_navigation_pkg",              "isApply": true, "useLocal": true, "localPath": "./feature/navigation/pkg"},
 
-    {"name": "lib_base",                      "isApply": true, "useLocal": true, "localPath": "./lib/base", "remotePath": "io.github.weiliqiang:lib_base:1.0.7"},
-    {"name": "lib_common",                    "isApply": true, "useLocal": true, "localPath": "./lib/common", "remotePath": "io.github.weiliqiang:lib_common:1.0.1"}
+    {"name": "lib_base",                      "isApply": true, "useLocal": false, "localPath": "./lib/base", "remotePath": "io.github.weiliqiang:lib_base:1.0.9"},
+    {"name": "lib_common",                    "isApply": true, "useLocal": false, "localPath": "./lib/common", "remotePath": "io.github.weiliqiang:lib_common:1.0.3"}
   ]
 }

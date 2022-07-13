@@ -31,8 +31,6 @@ afterEvaluate {
                 } else {
                     from project.components.java
                 }
-                artifact sourcesJar
-                artifact javadocJar
 
                 pom {
                     name = ext.artifactId
@@ -59,12 +57,10 @@ afterEvaluate {
 
                     if (project.ext.multiPublishMode) {
                         withXml {
-                            def dependenciesNode = asNode().getAt('dependencies')[0] ?:
-                                    asNode().appendNode('dependencies')
-
-//                            configurations.api.getDependencies().each {
-//                                dep -> addDependency(project, dependenciesNode, dep, "compile")
-//                            }
+                            def dependenciesNode = asNode().getAt('dependencies')[0] ?: asNode().appendNode('dependencies')
+                            configurations.api.getDependencies().each {
+                                dep -> addDependency(project, dependenciesNode, dep, "compile")
+                            }
                             configurations.implementation.getDependencies().each {
                                 dep -> addDependency(project, dependenciesNode, dep, "runtime")
                             }

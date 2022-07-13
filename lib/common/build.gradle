@@ -1,6 +1,6 @@
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api Config.modules.lib_base.dep
+    implementation Config.modules.lib_base.dep
 }
 
 android {

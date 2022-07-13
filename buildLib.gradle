@@ -15,6 +15,7 @@ dependencies {
          * 如果此模块是“_export”，则依赖“lib_common”模块即可
          */
         api Config.modules.lib_common.dep
+        api Config.modules.lib_base.dep
     }
 
 }
