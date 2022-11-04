@@ -7,7 +7,7 @@ import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewbinding.ViewBinding
-import com.wlq.willymodule.base.mvi.ui.fragment.BaseVBFragment
+import com.wlq.willymodule.base.mvi.view.fragment.BaseVBFragment
 
 abstract class BaseLazyFragment<VB : ViewBinding>(
     inflate: (LayoutInflater, ViewGroup?, Boolean) -> VB

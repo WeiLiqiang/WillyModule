@@ -17,17 +17,6 @@
             <option value="$PROJECT_DIR$/feature/index/pkg" />
             <option value="$PROJECT_DIR$/feature/main/app" />
             <option value="$PROJECT_DIR$/feature/main/pkg" />
-            <option value="$PROJECT_DIR$/feature/navigation/export" />
-            <option value="$PROJECT_DIR$/feature/navigation/pkg" />
-            <option value="$PROJECT_DIR$/feature/project/app" />
-            <option value="$PROJECT_DIR$/feature/project/export" />
-            <option value="$PROJECT_DIR$/feature/project/pkg" />
-            <option value="$PROJECT_DIR$/feature/system/app" />
-            <option value="$PROJECT_DIR$/feature/system/export" />
-            <option value="$PROJECT_DIR$/feature/system/pkg" />
-            <option value="$PROJECT_DIR$/feature/wx/app" />
-            <option value="$PROJECT_DIR$/feature/wx/export" />
-            <option value="$PROJECT_DIR$/feature/wx/pkg" />
             <option value="$PROJECT_DIR$/lib/base" />
             <option value="$PROJECT_DIR$/lib/common" />
             <option value="$PROJECT_DIR$/plugin/api-gradle-plugin" />

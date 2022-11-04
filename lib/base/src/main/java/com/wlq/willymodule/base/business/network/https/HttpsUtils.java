@@ -1,5 +1,7 @@
 package com.wlq.willymodule.base.business.network.https;
 
+import com.wlq.willymodule.base.util.LogUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyManagementException;
@@ -21,6 +23,8 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 public class HttpsUtils {
+
+    private static final String TAG = HttpsUtils.class.getSimpleName();
 
     public static class SSLParams {
         public SSLSocketFactory sSLSocketFactory;
@@ -178,6 +182,7 @@ public class HttpsUtils {
     public static HostnameVerifier UnSafeHostnameVerifier = new HostnameVerifier() {
         @Override
         public boolean verify(String hostname, SSLSession session) {
+            LogUtils.i(TAG, "verify hostname:" + hostname);
             return true;
         }
     };

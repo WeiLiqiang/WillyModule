@@ -4,14 +4,13 @@ import com.wlq.willymodule.base.business.network.cookie.store.MemoryCookieStore
 import com.wlq.willymodule.base.business.network.cookie.store.PersistentCookieStore
 import com.wlq.willymodule.base.util.LogUtils
 import com.wlq.willymodule.common.http.model.*
-import com.wlq.willymodule.common.http.model.handlingException
 import com.wlq.willymodule.common.model.store.UserInfoStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 
 open class BaseBusinessRepository {
 
-    suspend fun <T : Any> safeApiCall(
+    suspend fun <T : Any> apiCall(
         call: suspend () -> HttpResult<T>,
         handleCustomError: ((httpError: HttpError) -> Unit)? = null,     //处理一些自定义的错误
         specifiedMessage: String? = null     //指定错误提示信息
@@ -19,13 +18,13 @@ open class BaseBusinessRepository {
         return try {
             call()
         } catch (e: Exception) {
-            val httpError = handlingException(e)
-            commonHandleErrorBusiness(httpError)
-            handleCustomError?.let { it(httpError) }
+            val handleExceptionResult = handlingException(e)
+            commonHandleErrorBusiness(handleExceptionResult)
+            handleCustomError?.let { it(handleExceptionResult) }
             HttpResult.Error(
                 ApiException(
-                    httpError.code,
-                    if (specifiedMessage.isNullOrEmpty()) httpError.errorMsg else specifiedMessage,
+                    handleExceptionResult.code,
+                    if (specifiedMessage.isNullOrEmpty()) handleExceptionResult.errorMsg else specifiedMessage,
                     if (e.localizedMessage != null) e.localizedMessage else ""
                 )
             )
@@ -35,14 +34,25 @@ open class BaseBusinessRepository {
     private fun commonHandleErrorBusiness(httpError: HttpError) {
         LogUtils.e("${httpError.code}:${httpError.errorMsg}")
         if (httpError.code == -1001) {
-            //登录失败，清楚用户信息和cookie
+            //登录失败，清除用户信息和cookie
             UserInfoStore.clearUserInfo()
             PersistentCookieStore().removeAllCookie()
             MemoryCookieStore().removeAllCookie()
         }
     }
 
-    suspend fun <T : Any>  executeResponse(
+    suspend fun executeResponseString(
+        response: Any,
+        successBlock: (suspend CoroutineScope.() -> Unit)? = null,
+        errorBlock: (suspend CoroutineScope.() -> Unit)? = null
+    ): HttpResult.Success<Any> {
+        return coroutineScope {
+            successBlock?.let { it() }
+            HttpResult.Success(response)
+        }
+    }
+
+    suspend fun <T : Any> executeResponseHttpResult(
         response: ApiResponse<T>,
         successBlock: (suspend CoroutineScope.() -> Unit)? = null,
         errorBlock: (suspend CoroutineScope.() -> Unit)? = null

@@ -1,9 +1,0 @@
-{
-  "BusUtilsClass": "com.wlq.willymodule.base.util.BusUtils",
-  "rightBus": {
-    "TAG_ONE_PARAM": [
-      "{ desc: com.wlq.willymodule.system.pkg.ui.SystemActivity#oneParamFun(java.lang.String param), sticky: true }"
-    ]
-  },
-  "wrongBus": {}
-}

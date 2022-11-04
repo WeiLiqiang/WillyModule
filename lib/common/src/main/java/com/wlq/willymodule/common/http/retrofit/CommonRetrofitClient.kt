@@ -19,7 +19,7 @@ open class CommonRetrofitClient(private val headers: Map<String, String>?) : Bas
     constructor() : this(null)
 
     companion object {
-        private const val BASE_URL = "https://www.wanandroid.com"
+        private const val BASE_URL = "https://neteasecloudmusicapi-alpha.vercel.app/"
     }
 
     open var addCacheInterceptor: Boolean = true

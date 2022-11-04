@@ -9,6 +9,6 @@ class MainRepository : BaseBusinessRepository() {
     private val apiService by lazy { LoginRetrofitClient.service }
 
     suspend fun logout(): HttpResult<Any> {
-        return safeApiCall(call = { executeResponse(apiService.logout()) })
+        return apiCall(call = { executeResponseHttpResult(apiService.logout()) })
     }
 }

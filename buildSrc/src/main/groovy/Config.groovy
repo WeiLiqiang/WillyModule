@@ -14,10 +14,6 @@ class Config {
     static kotlinVersion = '1.4.20'
     static ktxVersion = '1.2.0'
     static lifecycleVersion = '2.4.0'
-    static byteXVersion = '0.3.0'
-
-    static lib_base_version = '1.0.8'
-    static lib_common_version = '1.0.2'
 
     static modules = [
             /*Don't delete this line*/
@@ -31,18 +27,6 @@ class Config {
             feature_index_app          : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/index/app"),
             feature_index_export       : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/index/export"),
             feature_index_pkg          : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/index/pkg"),
-            feature_project_app        : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/project/app"),
-            feature_project_export     : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/project/export"),
-            feature_project_pkg        : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/project/pkg"),
-            feature_system_app         : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/system/app"),
-            feature_system_export      : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/system/export"),
-            feature_system_pkg         : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/system/pkg"),
-            feature_wx_app             : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/wx/app"),
-            feature_wx_export          : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/wx/export"),
-            feature_wx_pkg             : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/wx/pkg"),
-            feature_navigation_app     : new ModuleConfig(isApply: false, useLocal: true , localPath: "./feature/navigation/app"),
-            feature_navigation_export  : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/navigation/export"),
-            feature_navigation_pkg     : new ModuleConfig(isApply: true , useLocal: true , localPath: "./feature/navigation/pkg"),
             lib_base                   : new ModuleConfig(isApply: true , useLocal: true , localPath: "./lib/base", remotePath: "io.github.weiliqiang:lib_base:1.0.7"),
             lib_common                 : new ModuleConfig(isApply: true , useLocal: true , localPath: "./lib/common", remotePath: "io.github.weiliqiang:lib_common:1.0.1"),
             /*Don't delete this line*/
@@ -92,12 +76,7 @@ class Config {
             brvh                        : new LibConfig(path: "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.7"),
             banner                      : new LibConfig(path: "com.youth.banner:banner:1.4.10"),
 
-            bytex_common                : new LibConfig(path: "com.bytedance.android.byteX:common:$byteXVersion"),
-            bytex_processor             : new LibConfig(path: "com.bytedance.android.byteX:PluginConfigProcessor:$byteXVersion"),
-
             commons_io                  : new LibConfig(path: "commons-io:commons-io:2.6"),
-
-            particle_view               : new LibConfig(path: "me.wangyuwei:ParticleView:1.0.4"),
 
             auto_size                   : new LibConfig(path: "com.github.JessYanCoding:AndroidAutoSize:v1.2.1")
     ]

@@ -14,39 +14,40 @@ class IndexBusinessRepository : BaseBusinessRepository() {
     private val httpService by lazy { IndexRetrofitClient.service }
 
     suspend fun getBanners(): HttpResult<List<Banner>> {
-        return safeApiCall(
+        return apiCall(
             call = { requestBanners() },
-            handleCustomError = { handleError(it) }
+            handleCustomError = { handleCustomError(it) },
+            specifiedMessage = ""
         )
     }
 
-    private fun handleError(httpError: HttpError) {
+    private fun handleCustomError(httpError: HttpError) {
         if (httpError.code == HttpError.UNKNOWN_HOST_ERROR.code) {
             LogUtils.i("handleError", "${Thread.currentThread().name}:正在处理首页请求错误异常逻辑...")
         }
     }
 
     private suspend fun requestBanners(): HttpResult<List<Banner>> =
-        executeResponse(httpService.getBanner())
+        executeResponseHttpResult(httpService.getBanner())
 
     suspend fun getArticleList(currentPage: Int): HttpResult<ApiPageResponse<IndexArticle>> {
-        return safeApiCall(call = { requestArticleList(currentPage) }, specifiedMessage = "")
+        return apiCall(call = { requestArticleList(currentPage) }, specifiedMessage = "")
     }
 
     private suspend fun requestArticleList(page: Int): HttpResult<ApiPageResponse<IndexArticle>> =
-        executeResponse(httpService.getHomeArticles(page))
+        executeResponseHttpResult(httpService.getHomeArticles(page))
 
     suspend fun collectArticle(articleId: Int): HttpResult<ApiPageResponse<IndexArticle>> {
-        return safeApiCall(call = { requestCollectArticle(articleId) }, specifiedMessage = "")
+        return apiCall(call = { requestCollectArticle(articleId) }, specifiedMessage = "")
     }
 
     private suspend fun requestCollectArticle(articleId: Int): HttpResult<ApiPageResponse<IndexArticle>> =
-        executeResponse(httpService.collectArticle(articleId))
+        executeResponseHttpResult(httpService.collectArticle(articleId))
 
     suspend fun unCollectArticle(articleId: Int): HttpResult<ApiPageResponse<IndexArticle>> {
-        return safeApiCall(call = { requestUnCollectArticle(articleId) }, specifiedMessage = "")
+        return apiCall(call = { requestUnCollectArticle(articleId) }, specifiedMessage = "")
     }
 
     private suspend fun requestUnCollectArticle(articleId: Int): HttpResult<ApiPageResponse<IndexArticle>> =
-        executeResponse(httpService.collectArticle(articleId))
+        executeResponseHttpResult(httpService.collectArticle(articleId))
 }

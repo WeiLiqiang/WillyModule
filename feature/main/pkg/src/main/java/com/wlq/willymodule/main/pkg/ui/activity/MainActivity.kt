@@ -10,28 +10,26 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.google.android.material.navigation.NavigationView
 import com.wlq.willymodule.base.business.glide.GlideImageLoader
-import com.wlq.willymodule.base.mvi.observeState
 import com.wlq.willymodule.base.util.*
 import com.wlq.willymodule.base.util.ClickUtils.Back2HomeFriendlyListener
 import com.wlq.willymodule.common.base.BaseBusinessActivity
 import com.wlq.willymodule.common.databinding.LayoutToolbarBinding
 import com.wlq.willymodule.common.model.bean.UserInfo
 import com.wlq.willymodule.common.view.CircleImageView
-import com.wlq.willymodule.index.export.IndexExportApi
+import com.wlq.willymodule.index.export.constants.IndexExportApi
 import com.wlq.willymodule.main.pkg.R
 import com.wlq.willymodule.main.pkg.data.constant.MainConstants
 import com.wlq.willymodule.main.pkg.databinding.ActivityMainBinding
-import com.wlq.willymodule.main.pkg.ui.action.MainViewLoginState
+import com.wlq.willymodule.main.pkg.ui.intent.MainEvent
+import com.wlq.willymodule.main.pkg.ui.intent.MainLoginStatus
 import com.wlq.willymodule.main.pkg.ui.viewmodel.MainViewModel
-import com.wlq.willymodule.navigation.export.NavigationExportApi
-import com.wlq.willymodule.project.export.ProjectExportApi
-import com.wlq.willymodule.system.export.SystemExportApi
-import com.wlq.willymodule.wx.export.WxExportApi
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.flow.collect
 
 open class MainActivity :
     BaseBusinessActivity<ActivityMainBinding, MainViewModel>(ActivityMainBinding::inflate) {
@@ -53,7 +51,7 @@ open class MainActivity :
 
     @BusUtils.Bus(tag = MainConstants.BUS_TAG_USER_NAME, sticky = true)
     fun loginSuccessAndUpdateUserInfo(userInfo: UserInfo) {
-        viewModel.updateUserInfo(userInfo)
+        viewModel.sendEvent(MainEvent.UpdateUserInfo(userInfo))
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -66,21 +64,23 @@ open class MainActivity :
         if (savedInstanceState != null) {
             mIndex = savedInstanceState.getInt(BOTTOM_INDEX)
         }
-        viewModel.getUserInfo()?.let { viewModel.updateUserInfo(it) }
-        viewModel.apply {
-            viewLoginState.run {
-                observeState(this@MainActivity, MainViewLoginState::username) {
-                    tvNavUsername?.text = it
+        viewModel.getUserInfo()?.let { viewModel.sendEvent(MainEvent.UpdateUserInfo(it)) }
+        lifecycleScope.launchWhenStarted {
+            viewModel.uiState.collect {
+                when (it.loginStatus) {
+                    is MainLoginStatus.SUCCESS -> {
+                        itemLogOut?.isVisible = true
+                        if (drawer_layout.isDrawerOpen(Gravity.LEFT)) drawer_layout.closeDrawers()
+                    }
+                    is MainLoginStatus.FAILURE -> {
+                        itemLogOut?.isVisible = false
+                        if (drawer_layout.isDrawerOpen(Gravity.LEFT)) drawer_layout.closeDrawers()
+                        GlideImageLoader.getInstance()
+                            .displayImage(Utils.getApp(), R.mipmap.ic_default_avatar, ivNavHeader)
+                    }
                 }
-                observeState(this@MainActivity, MainViewLoginState::headerUrl) {
-                    GlideImageLoader.getInstance().displayImage(Utils.getApp(), it, ivNavHeader)
-                }
-                observeState(this@MainActivity, MainViewLoginState::loginSuccess) {
-                    if (drawer_layout.isDrawerOpen(Gravity.LEFT)) drawer_layout.closeDrawers()
-                    GlideImageLoader.getInstance()
-                        .displayImage(Utils.getApp(), R.mipmap.ic_default_avatar, ivNavHeader)
-                    itemLogOut?.isVisible = it
-                }
+                tvNavUsername?.text = it.username
+                GlideImageLoader.getInstance().displayImage(Utils.getApp(), it.headerUrl, ivNavHeader)
             }
         }
     }
@@ -151,32 +151,23 @@ open class MainActivity :
             FRAGMENT_HOME // 首页
             -> {
                 layoutToolbarBinding.toolbar.title = getString(R.string.app_name)
-                ApiUtils.getApi(IndexExportApi::class.java)
-                    ?.showFragment(fragmentTransaction, R.id.container)
+                val indexName = ApiUtils.getApi(IndexExportApi::class.java)?.getComponentName()
             }
             FRAGMENT_SYSTEM // 体系
             -> {
                 layoutToolbarBinding.toolbar.title = getString(R.string.knowledge_system)
-                ApiUtils.getApi(SystemExportApi::class.java)
-                    ?.showFragment(fragmentTransaction, R.id.container)
             }
             FRAGMENT_NAVIGATION // 导航
             -> {
                 layoutToolbarBinding.toolbar.title = getString(R.string.navigation)
-                ApiUtils.getApi(NavigationExportApi::class.java)
-                    ?.showFragment(fragmentTransaction, R.id.container)
             }
             FRAGMENT_PROJECT // 项目
             -> {
                 layoutToolbarBinding.toolbar.title = getString(R.string.project)
-                ApiUtils.getApi(ProjectExportApi::class.java)
-                    ?.showFragment(fragmentTransaction, R.id.container)
             }
             FRAGMENT_WECHAT // 公众号
             -> {
                 layoutToolbarBinding.toolbar.title = getString(R.string.wechat)
-                ApiUtils.getApi(WxExportApi::class.java)
-                    ?.showFragment(fragmentTransaction, R.id.container)
             }
         }
         fragmentTransaction.commit()
@@ -186,11 +177,6 @@ open class MainActivity :
      * 隐藏所有的Fragment
      */
     private fun hideFragments(fragmentTransaction: FragmentTransaction) {
-        ApiUtils.getApi(IndexExportApi::class.java)?.hideFragment(fragmentTransaction)
-        ApiUtils.getApi(SystemExportApi::class.java)?.hideFragment(fragmentTransaction)
-        ApiUtils.getApi(NavigationExportApi::class.java)?.hideFragment(fragmentTransaction)
-        ApiUtils.getApi(ProjectExportApi::class.java)?.hideFragment(fragmentTransaction)
-        ApiUtils.getApi(WxExportApi::class.java)?.hideFragment(fragmentTransaction)
     }
 
     /**
@@ -255,7 +241,6 @@ open class MainActivity :
     private val onFABClickListener = View.OnClickListener {
         when (mIndex) {
             FRAGMENT_HOME -> {
-                ApiUtils.getApi(IndexExportApi::class.java)?.fragmentScrollToTop()
             }
             FRAGMENT_SYSTEM -> {
             }

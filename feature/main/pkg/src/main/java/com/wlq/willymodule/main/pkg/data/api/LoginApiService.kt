@@ -1,5 +1,6 @@
 package com.wlq.willymodule.main.pkg.data.api
 
+import com.google.gson.JsonObject
 import com.wlq.willymodule.common.http.model.ApiResponse
 import com.wlq.willymodule.common.http.retrofit.CommonRetrofitClient
 import com.wlq.willymodule.common.model.bean.UserInfo
@@ -14,6 +15,18 @@ interface LoginApiService {
     companion object {
         const val BASE_URL = "https://www.wanandroid.com"
     }
+
+    /**
+     * 游客登录
+     */
+    @POST("/register/anonimous")
+    suspend fun loginAnonimous(): JsonObject
+
+    /**
+     * 刷新登录
+     */
+    @POST("/login/refresh")
+    suspend fun refreshLogin(): String
 
     @POST("/user/login")
     @FormUrlEncoded

@@ -70,6 +70,11 @@ enum class HttpError(var code: Int, var errorMsg: String) {
     ILLEGAL_ARGUMENT_ERROR(1008, "非法参数错误"),
 
     /**
+     * 非法参数错误
+     */
+    ILLEGAL_STATE_ERROR(1009, "状态错误，请排查网络数据处理流程"),
+
+    /**
      * token过期
      */
     TOKEN_EXPIRE(3001, "token过期错误"),
@@ -124,6 +129,9 @@ internal fun handlingException(e: Throwable): HttpError = when (e) {
     }
     is IllegalArgumentException -> {
         HttpError.ILLEGAL_ARGUMENT_ERROR
+    }
+    is java.lang.IllegalStateException -> {
+        HttpError.ILLEGAL_STATE_ERROR
     }
     else -> {
         HttpError.UNKNOWN

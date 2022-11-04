@@ -9,37 +9,52 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
-import com.wlq.willymodule.base.mvi.livedata.CommonViewEvent
-import com.wlq.willymodule.base.mvi.observeEvent
-import com.wlq.willymodule.base.mvi.ui.activity.BaseVBActivity
+import com.wlq.willymodule.base.mvi.intent.SingleEvent
+import com.wlq.willymodule.base.mvi.view.activity.BaseVBActivity
+import com.wlq.willymodule.base.mvi.vm.BaseViewModel
 import com.wlq.willymodule.base.util.BusUtils
 import com.wlq.willymodule.base.util.LogUtils
+import com.wlq.willymodule.base.util.Utils
 import com.wlq.willymodule.common.R
-import com.wlq.willymodule.common.base.viewmodel.BaseBusinessViewModel
 import com.wlq.willymodule.common.receiver.NetworkChangeReceiver
 import com.wlq.willymodule.common.utils.SettingUtil
 import com.wlq.willymodule.common.utils.StatusBarUtil
+import kotlinx.coroutines.flow.collect
 
-abstract class BaseBusinessActivity<VB : ViewBinding,  VM : BaseBusinessViewModel>(
+abstract class BaseBusinessActivity<VB : ViewBinding,  VM : BaseViewModel>(
     inflate: (LayoutInflater) -> VB
 ) : BaseVBActivity<VB>(inflate) {
 
     protected abstract val viewModel: VM
 
-    protected var mThemeColor: Int = SettingUtil.getColor()
+    private var mThemeColor: Int = SettingUtil.getColor()
 
-    protected var mNetworkChangeReceiver: NetworkChangeReceiver? = null
+    private var mNetworkChangeReceiver: NetworkChangeReceiver? = null
 
     private var progressDialog: ProgressDialog? = null
 
     override fun initData(savedInstanceState: Bundle?) {
-        viewModel.singleViewEvens.observeEvent(this) {
-            when (it) {
-                is CommonViewEvent.Toast -> Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-                is CommonViewEvent.Log -> LogUtils.log(it.type, this::class.java.simpleName, it.message)
-                is CommonViewEvent.ShowLoadingDialog -> showLoading()
-                is CommonViewEvent.DismissLoadingDialog -> dismissLoading()
+        lifecycleScope.launchWhenStarted {
+            viewModel.singleEvent.collect {
+                when(it) {
+                    is SingleEvent.ShowToast -> {
+                        Toast.makeText(Utils.getApp(), it.content, Toast.LENGTH_SHORT).show()
+                    }
+                    is SingleEvent.ShowLog -> {
+                        LogUtils.log(it.type, this::class.java.simpleName, it.content)
+                    }
+                    is SingleEvent.ShowCommonDialog -> {
+                        //TODO 显示通用弹框
+                    }
+                    is SingleEvent.ShowLoadingDialog -> {
+                        showLoading()
+                    }
+                    is SingleEvent.DismissLoadingDialog -> {
+                        dismissLoading()
+                    }
+                }
             }
         }
     }

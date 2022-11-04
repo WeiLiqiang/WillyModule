@@ -2,20 +2,21 @@ package com.wlq.willymodule.main.pkg.data.rep
 
 import com.wlq.willymodule.common.base.BaseBusinessRepository
 import com.wlq.willymodule.common.http.model.HttpResult
-import com.wlq.willymodule.main.pkg.data.api.LoginRetrofitClient
 import com.wlq.willymodule.common.model.bean.UserInfo
+import com.wlq.willymodule.main.pkg.data.api.LoginRetrofitClient
 
 class LoginRepository : BaseBusinessRepository() {
 
     private val httpService by lazy { LoginRetrofitClient.service }
 
     suspend fun login(userName: String, password: String): HttpResult<UserInfo> {
-        return safeApiCall(call = { requestLogin(userName, password) })
+        return apiCall(
+            call = { executeResponseHttpResult(httpService.login(userName, password)) },
+            specifiedMessage = ""
+        )
     }
 
-    private suspend fun requestLogin(
-        userName: String,
-        password: String
-    ): HttpResult<UserInfo> =
-        executeResponse(httpService.login(userName, password))
+    suspend fun loginAnonimous(): HttpResult<Any> {
+        return apiCall(call = { executeResponseString(httpService.loginAnonimous()) })
+    }
 }
